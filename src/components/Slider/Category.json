@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Ноутбуки та комп'ютери",
+    "icon": "path/to/laptop_icon.png"
+  },
+  {
+    "id": 2,
+    "title": "Смартфони, ТВ і електроніка",
+    "icon": "path/to/smartphone_icon.png"
+  },
+  {
+    "id": 3,
+    "title": "Ігри та програмне забезпечення",
+    "icon": "path/to/game_icon.png"
+  },
+  {
+    "id": 4,
+    "title": "Аксесуари",
+    "icon": "path/to/accessories_icon.png"
+  },
+  {
+    "id": 5,
+    "title": "Розумний дім",
+    "icon": "path/to/smart_home_icon.png"
+  },
+  {
+    "id": 6,
+    "title": "Телевізори та мультимедія",
+    "icon": "path/to/smart_home_icon.png"
+  },
+  {
+    "id": 7,
+    "title": "Xiomi",
+    "icon": "path/to/smart_home_icon.png"
+  },
+  {
+    "id": 8,
+    "title": "Apple",
+    "icon": "path/to/smart_home_icon.png"
+  }
+]
