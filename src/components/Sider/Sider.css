@@ -1,0 +1,55 @@
+.sider {
+  max-height: 100vh;
+}
+.menu {
+  margin-top: 60px;
+  align-self: center;
+  color: #fff;
+}
+
+.div-border-upper {
+  border-top: 1px solid black;
+}
+
+.div-border-bottom {
+  border-bottom: 1px solid black;
+}
+
+.footer-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+  color: #000000;
+}
+
+.social-media-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.social-media-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 30%;
+  background-color: #f0f0f0; /* Adjust background color */
+  color: #333; /* Adjust icon color */
+  text-decoration: none;
+}
+
+.social-media-button:hover {
+  background-color: #e0e0e0;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  margin: 10px;
+}
