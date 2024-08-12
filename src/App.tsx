@@ -1,8 +1,6 @@
 import "./App.css";
-import CategoryPage from "./components/CategoryPage/CategoryPage";
 import Main from "./components/Main/Main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProductPage from "./components/ProductPage/ProductPage";
 import Error404 from "./components/ErrorPages/Error404/Error404";
 
 function App() {

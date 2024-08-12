@@ -19,7 +19,7 @@ export default class ProductService {
     }
   }
 
-  static async getProductByID(id: any): Promise<ProductDetails> {
+  static async getProductByID(id: string): Promise<ProductDetails> {
     try {
       const response = await api.get<ProductDetails>(`/products/${id}`);
       return response.data;

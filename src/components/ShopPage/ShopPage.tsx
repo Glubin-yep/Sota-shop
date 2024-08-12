@@ -14,11 +14,11 @@ export default function ShopPage() {
   );
 
   useEffect(() => {
-    // Simulate data fetching
     async function fetchData() {
       setIsLoading(true);
       try {
         const response = await ProductService.getAllProductForMainPage(8);
+        setData(response);
       } catch (error) {
         console.error("Error fetching data:", error);
         setData(null);
