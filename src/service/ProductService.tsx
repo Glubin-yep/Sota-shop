@@ -28,4 +28,18 @@ export default class ProductService {
       throw error;
     }
   }
+
+  static async getAllProductByCategory(
+    category: string
+  ): Promise<ProductDetails[]> {
+    try {
+      const response = await api.get<ProductDetails[]>(
+        `/products/category/${category}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error while fetching files:", error);
+      throw error;
+    }
+  }
 }

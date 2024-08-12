@@ -8,3 +8,14 @@ export enum Category {
   TV = "TV",
   Kitchen = "Kitchen",
 }
+
+export enum CategoryUA {
+  Laptop = "Ноутбуки",
+  Computer = "Комп'ютери",
+  Smartphone = "Смартфони",
+  Software = "Програмне забеспечення",
+  Accessories = "Аксесуари",
+  SmartHome = "Розумний дім",
+  TV = "Телевізори",
+  Kitchen = "Для кухні",
+}

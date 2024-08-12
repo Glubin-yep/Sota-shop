@@ -1,0 +1,6 @@
+.cards--block--all {
+  display: flex;
+  flex-wrap: wrap; /* Додаємо перенесення на новий рядок */
+  gap: 24px;
+  padding-bottom: 16px;
+}

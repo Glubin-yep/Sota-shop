@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu, Layout } from "antd";
 //import logo from "../../assets/logo.svg";
 import "./Sider.css";
@@ -9,6 +9,9 @@ import "./Sider.css";
 //import Logout from "../Auth/Logout/Logout";
 import categoriesData from "./Category.json"; // Assuming your JSON file is named categories.json
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"; // Import social media icons
+import CategoryPage from "../CategoryPage/CategoryPage";
+import ShopPage from "../ShopPage/ShopPage";
+import { Category } from "../../Types/Category.enums";
 
 const { Sider } = Layout;
 
@@ -16,32 +19,94 @@ interface SliderProps {
   onChangeContent: (content: React.ReactNode) => void;
 }
 
-const Slider: React.FC<SliderProps> = () => {
-  // const handleMenuClick = (contentKey: string) => {
-  //   switch (contentKey) {
-  //     case "1":
-  //       //  onChangeContent(<DashBoard />);
-  //       break;
-  //     case "2":
-  //       // onChangeContent(<Activity />);
-  //       break;
-  //     case "3":
-  //       // onChangeContent(<History />);
-  //       break;
-  //     case "4":
-  //       // onChangeContent(<Profile />);
-  //       break;
-  //     case "5":
-  //       // onChangeContent(<Logout />);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
+const Slider: React.FC<SliderProps> = ({ onChangeContent }) => {
+  const [selectedKeys, setSelectedKeys] = useState([]);
+
+  const handleMenuClick = (contentKey: string) => {
+    switch (contentKey) {
+      case "0":
+        onChangeContent(<ShopPage />);
+        break;
+      case "1":
+        onChangeContent(
+          <CategoryPage
+            category={Category.Laptop}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      case "2":
+        onChangeContent(
+          <CategoryPage
+            category={Category.Computer}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      case "3":
+        onChangeContent(
+          <CategoryPage
+            category={Category.Smartphone}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      case "4":
+        onChangeContent(
+          <CategoryPage
+            category={Category.Software}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      case "5":
+        onChangeContent(
+          <CategoryPage
+            category={Category.Accessories}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      case "6":
+        onChangeContent(
+          <CategoryPage
+            category={Category.SmartHome}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      case "7":
+        onChangeContent(
+          <CategoryPage
+            category={Category.TV}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      case "8":
+        onChangeContent(
+          <CategoryPage
+            category={Category.Kitchen}
+            onChangeContent={onChangeContent}
+          />
+        );
+        break;
+      default:
+        break;
+    }
+    setSelectedKeys([]);
+  };
 
   return (
     <Sider className="sider" theme="light">
-      <Menu className="menu" defaultSelectedKeys={["1"]}>
+      <Menu
+        className="menu"
+        onSelect={({ key }) => handleMenuClick(key)}
+        selectedKeys={selectedKeys}
+      >
+        <Menu.Item key="0">
+          <a>Головна</a>
+        </Menu.Item>
         {categoriesData.map((category) => (
           <Menu.Item key={category.id}>
             {" "}

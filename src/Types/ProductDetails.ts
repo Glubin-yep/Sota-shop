@@ -63,7 +63,7 @@ interface KitchenDetails {
 }
 
 export interface ProductDetails {
-  id: number;
+  id: string;
   name: string;
   price: string;
   discount: number;
