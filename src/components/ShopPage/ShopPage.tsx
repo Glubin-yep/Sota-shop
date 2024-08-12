@@ -4,18 +4,21 @@ import LoadingScreen from "../Loader/Loader";
 import categoriesData from "../Sider/Category.json";
 import ProductService from "../../service/ProductService";
 import { ProductType } from "../../Types/ProductType";
+import ProductPage from "../ProductPage/ProductPage";
 
 export default function ShopPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<ProductType[] | null>(null);
+  const [selectedProductID, setSelectedProductID] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     // Simulate data fetching
     async function fetchData() {
       setIsLoading(true);
       try {
-        const response = await ProductService.getAllProductForMainPage(8); // Replace with actual service call
-        setData(response);
+        const response = await ProductService.getAllProductForMainPage(8);
       } catch (error) {
         console.error("Error fetching data:", error);
         setData(null);
@@ -27,18 +30,25 @@ export default function ShopPage() {
     fetchData();
   }, []);
 
+  const handleCardClick = (id: string) => {
+    setSelectedProductID(id);
+  };
+
   return (
     <div className="main">
       {isLoading ? (
         <LoadingScreen />
+      ) : selectedProductID ? (
+        <ProductPage id={selectedProductID} />
       ) : (
         <>
           {categoriesData.map((category) => (
             <CategorySection
-              key={category.id} // Use a unique identifier for each category
+              key={category.id}
               titleTop={category.title}
               category={category.category}
               data={data}
+              onCardClick={handleCardClick}
             />
           ))}
         </>

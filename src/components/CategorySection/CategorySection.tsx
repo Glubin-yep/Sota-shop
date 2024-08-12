@@ -1,20 +1,22 @@
-import type { FC } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import "./CategorySection.css";
 import { ProductType } from "../../Types/ProductType";
 import { Badge } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 interface CategorySectionProps {
   category: string;
   titleTop: string;
   data: ProductType[] | null;
+  onCardClick: (id: string) => void;
 }
 
-const CategorySection: FC<CategorySectionProps> = ({
+const CategorySection: React.FC<CategorySectionProps> = ({
   category,
   titleTop,
   data,
+  onCardClick,
 }) => {
   const filteredData = data?.filter((item) => item.category === category);
 
@@ -30,25 +32,22 @@ const CategorySection: FC<CategorySectionProps> = ({
         {filteredData && filteredData.length > 0 ? (
           <>
             {filteredData.map((item) => (
-              <div className="card" key={item.id}>
-                <Link
-                  to={`/items/${item.category}/${item.id}`}
-                  className="card--href"
-                >
-                  <img
-                    src={item.photoURL}
-                    className="card--photo"
-                    alt={item.name}
-                    loading="lazy"
-                  />
-                  <span className="card--title">{item.name}</span>
-                </Link>
-
+              <div
+                className="card"
+                key={item.id}
+                onClick={() => onCardClick(item.id)}
+              >
+                <img
+                  src={item.photoURL}
+                  className="card--photo"
+                  alt={item.name}
+                  loading="lazy"
+                />
+                <span className="card--title">{item.name}</span>
                 <div className="card--rating">
                   <span className="star">★</span>
                   <span>{item.rating ? item.rating.toFixed(1) : "N/A"}</span>
                 </div>
-
                 <span className="card--price">{item.price} грн.</span>
                 <Badge className="card--button">
                   <a href="/cart">
