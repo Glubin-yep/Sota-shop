@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import CategorySection from "../CategorySection/CategorySection";
 import LoadingScreen from "../Loader/Loader";
 import categoriesData from "../Sider/Category.json";
