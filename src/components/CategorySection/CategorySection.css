@@ -1,11 +1,17 @@
 .product--section {
-  padding: 20px;
-  overflow-x: auto; /* Додає горизонтальну прокрутку */
+  padding: 8px;
+  overflow-x: hidden; /* Додає горизонтальну прокрутку */
+  position: relative; /* Щоб заголовок міг бути закріплений відносно цього контейнера */
 }
 
 .title {
+  position: sticky;
+  top: 0; /* Закріплює заголовок вгорі секції */
+  background: #fff; /* Додає фон для читабельності заголовка */
+  z-index: 10; /* Перекриває картки, якщо потрібно */
   text-align: center;
   margin-bottom: 20px;
+  padding: 10px; /* Додає відступи навколо заголовка */
 }
 
 .title--block {
@@ -13,11 +19,13 @@
 }
 
 .title--text {
+  position: sticky;
   font-size: 24px;
   margin: 0;
 }
 
 .title--line {
+  position: sticky;
   margin: 10px auto 0;
   width: 50px;
   border: 2px solid #333;
@@ -25,7 +33,9 @@
 
 .cards--block {
   display: flex;
-  gap: 20px; /* Проміжок між картками */
+  gap: 24px; /* Проміжок між картками */
+  overflow-x: scroll;
+  padding-bottom: 16px;
 }
 
 .card {
@@ -51,7 +61,7 @@
 
 .card--photo {
   max-width: 100%;
-  height: auto;
+  max-height: 60%;
   border-radius: 4px;
 }
 
@@ -109,15 +119,33 @@
   color: #ffd700; /* Золотий колір для зірок */
 }
 
-.product--section::-webkit-scrollbar {
-  height: 8px;
+.card--view-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  cursor: pointer;
 }
 
-.product--section::-webkit-scrollbar-thumb {
+.view-all--content {
+  text-align: center;
+}
+
+.view-all--text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cards--block::-webkit-scrollbar {
+  height: 12px;
+}
+
+.cards--block::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 4px;
 }
 
-.product--section::-webkit-scrollbar-track {
+.cards--block::-webkit-scrollbar-track {
   background-color: #f1f1f1;
 }

@@ -28,34 +28,43 @@ const CategorySection: FC<CategorySectionProps> = ({
       </div>
       <div className="cards--block">
         {filteredData && filteredData.length > 0 ? (
-          filteredData.map((item) => (
-            <div className="card" key={item._id}>
-              <Link
-                to={`/items/${item.category}/${item._id}`}
-                className="card--href"
-              >
-                <img
-                  src={item.photoURL}
-                  className="card--photo"
-                  alt={item.name}
-                  loading="lazy"
-                />
-                <span className="card--title">{item.name}</span>
-              </Link>
+          <>
+            {filteredData.map((item) => (
+              <div className="card" key={item.id}>
+                <Link
+                  to={`/items/${item.category}/${item.id}`}
+                  className="card--href"
+                >
+                  <img
+                    src={item.photoURL}
+                    className="card--photo"
+                    alt={item.name}
+                    loading="lazy"
+                  />
+                  <span className="card--title">{item.name}</span>
+                </Link>
 
-              <div className="card--rating">
-                <span className="star">★</span>
-                <span>{item.rating ? item.rating.toFixed(1) : "N/A"}</span>
+                <div className="card--rating">
+                  <span className="star">★</span>
+                  <span>{item.rating ? item.rating.toFixed(1) : "N/A"}</span>
+                </div>
+
+                <span className="card--price">{item.price} грн.</span>
+                <Badge className="card--button">
+                  <a href="/cart">
+                    <ShoppingCartOutlined style={{ fontSize: "24px" }} />
+                  </a>
+                </Badge>
               </div>
-
-              <span className="card--price">{item.price} грн.</span>
-              <Badge className="card--button">
-                <a href="/cart">
-                  <ShoppingCartOutlined style={{ fontSize: "24px" }} />
-                </a>
-              </Badge>
+            ))}
+            <div className="card card--view-all">
+              <Link to={`/category/${category}`} className="card--href">
+                <div className="view-all--content">
+                  <span className="view-all--text">View All {category}</span>
+                </div>
+              </Link>
             </div>
-          ))
+          </>
         ) : (
           <p>No products available in this category.</p>
         )}
