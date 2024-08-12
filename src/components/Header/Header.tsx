@@ -10,7 +10,7 @@ import { ProductType } from "../../Types/ProductType";
 const { Header } = Layout;
 
 interface ProductData {
-  _id: string;
+  id: string;
   name: string;
   category: string;
 }
@@ -27,7 +27,7 @@ const MyHeader: React.FC = () => {
 
   async function getData() {
     try {
-      const newData = await ProductService.getAllProduct();
+      const newData = await ProductService.getAllProductForMainPage(8);
       setData(newData);
     } catch (error) {
       console.error("Failed to fetch data", error);
@@ -62,8 +62,8 @@ const MyHeader: React.FC = () => {
           {isSearchFocused && filteredData && (
             <ul>
               {filteredData.map((product) => (
-                <li key={product._id} className="product-window-li">
-                  <a href={`/items/${product.category}/${product._id}`}>
+                <li key={product.id} className="product-window-li">
+                  <a href={`/items/${product.category}/${product.id}`}>
                     {product.name}
                   </a>
                 </li>

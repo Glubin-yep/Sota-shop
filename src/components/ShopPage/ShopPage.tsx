@@ -14,7 +14,7 @@ export default function ShopPage() {
     async function fetchData() {
       setIsLoading(true);
       try {
-        const response = await ProductService.getAllProduct(); // Replace with actual service call
+        const response = await ProductService.getAllProductForMainPage(8); // Replace with actual service call
         setData(response);
       } catch (error) {
         console.error("Error fetching data:", error);
