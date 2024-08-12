@@ -29,9 +29,9 @@ const CategorySection: FC<CategorySectionProps> = ({
       <div className="cards--block">
         {filteredData && filteredData.length > 0 ? (
           filteredData.map((item) => (
-            <div className="card" key={item.id}>
+            <div className="card" key={item._id}>
               <Link
-                to={`/items/${item.category}/${item.id}`}
+                to={`/items/${item.category}/${item._id}`}
                 className="card--href"
               >
                 <img

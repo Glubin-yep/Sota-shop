@@ -4,6 +4,8 @@ import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 //import ItemsService from "../../services/ItemsService";
 import "./Header.css";
 import logo from "../../assets/LogoPlaceholder.png";
+import ProductService from "../../service/ProductService";
+import { ProductType } from "../../Types/ProductType";
 
 const { Header } = Layout;
 
@@ -14,7 +16,7 @@ interface ProductData {
 }
 
 const MyHeader: React.FC = () => {
-  const [data, setData] = useState<ProductData[] | null>(null);
+  const [data, setData] = useState<ProductType[] | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<ProductData[] | null>(null);
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
@@ -25,8 +27,8 @@ const MyHeader: React.FC = () => {
 
   async function getData() {
     try {
-      // const newData = await ItemsService.getAllProducts();
-      // setData(newData.data);
+      const newData = await ProductService.getAllProduct();
+      setData(newData);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }

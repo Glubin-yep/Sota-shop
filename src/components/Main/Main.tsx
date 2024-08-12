@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
-import Slider from "../Slider/Slider";
+import Slider from "../Sider/Sider";
 import ShopPage from "../ShopPage/ShopPage";
 import "./Main.css";
 import AuthWrapper from "../Wrappers/AuthWrapper";
 import Header from "../Header/Header";
-
 const { Content: AntContent } = Layout;
 
 const Main: React.FC = () => {

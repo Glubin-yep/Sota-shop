@@ -1,4 +1,4 @@
-import { useState, type FC, type ReactNode, useEffect } from "react";
+import { type FC, type ReactNode } from "react";
 //import AuthService from "../../service/AuthService";
 //import RegistrationPrompt from "../ErrorPage/AuthError";
 
@@ -7,25 +7,25 @@ interface AuthWrapperProps {
 }
 
 const AuthWrapper: FC<AuthWrapperProps> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  //const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      // try {
-      //   const isAuthenticated = await AuthService.isValidToken();
-      //   setIsAuthenticated(isAuthenticated);
-      // } catch (error) {
-      //   console.error("Error checking authentication:", error);
-      //   setIsAuthenticated(false);
-      // }
-    };
+  // useEffect(() => {
+  //   const checkAuthentication = async () => {
+  //     // try {
+  //     //   const isAuthenticated = await AuthService.isValidToken();
+  //     //   setIsAuthenticated(isAuthenticated);
+  //     // } catch (error) {
+  //     //   console.error("Error checking authentication:", error);
+  //     //   setIsAuthenticated(false);
+  //     // }
+  //   };
 
-    checkAuthentication();
-  }, []);
+  //   checkAuthentication();
+  // }, []);
 
-  if (!isAuthenticated) {
-    // return <RegistrationPrompt />;
-  }
+  // if (!isAuthenticated) {
+  //   // return <RegistrationPrompt />;
+  // }
 
   return <>{children}</>;
 };

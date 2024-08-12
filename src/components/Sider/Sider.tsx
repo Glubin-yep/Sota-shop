@@ -1,11 +1,4 @@
-import React, { useState } from "react";
-import {
-  CloudOutlined,
-  DesktopOutlined,
-  HistoryOutlined,
-  LogoutOutlined,
-  ProfileOutlined,
-} from "@ant-design/icons";
+import React from "react";
 import { Menu, Layout } from "antd";
 //import logo from "../../assets/logo.svg";
 import "./Sider.css";
@@ -23,30 +16,28 @@ interface SliderProps {
   onChangeContent: (content: React.ReactNode) => void;
 }
 
-const Slider: React.FC<SliderProps> = ({ onChangeContent }) => {
-  const [collapsed, setCollapsed] = useState(false);
-
-  const handleMenuClick = (contentKey: string) => {
-    switch (contentKey) {
-      case "1":
-        //  onChangeContent(<DashBoard />);
-        break;
-      case "2":
-        // onChangeContent(<Activity />);
-        break;
-      case "3":
-        // onChangeContent(<History />);
-        break;
-      case "4":
-        // onChangeContent(<Profile />);
-        break;
-      case "5":
-        // onChangeContent(<Logout />);
-        break;
-      default:
-        break;
-    }
-  };
+const Slider: React.FC<SliderProps> = () => {
+  // const handleMenuClick = (contentKey: string) => {
+  //   switch (contentKey) {
+  //     case "1":
+  //       //  onChangeContent(<DashBoard />);
+  //       break;
+  //     case "2":
+  //       // onChangeContent(<Activity />);
+  //       break;
+  //     case "3":
+  //       // onChangeContent(<History />);
+  //       break;
+  //     case "4":
+  //       // onChangeContent(<Profile />);
+  //       break;
+  //     case "5":
+  //       // onChangeContent(<Logout />);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
 
   return (
     <Sider className="sider" theme="light">

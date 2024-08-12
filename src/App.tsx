@@ -1,9 +1,6 @@
-import { useState } from "react";
-
 import "./App.css";
 import Main from "./components/Main/Main";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
-import ShopPage from "./components/ShopPage/ShopPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
