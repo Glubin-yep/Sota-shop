@@ -1,42 +1,50 @@
 [
   {
     "id": 1,
-    "title": "Ноутбуки та комп'ютери",
+    "title": "Ноутбуки",
+    "category": "Laptop",
     "icon": "path/to/laptop_icon.png"
   },
   {
     "id": 2,
-    "title": "Смартфони, ТВ і електроніка",
-    "icon": "path/to/smartphone_icon.png"
+    "title": "Комп'ютери",
+    "category": "Computer",
+    "icon": "path/to/laptop_icon.png"
   },
   {
     "id": 3,
-    "title": "Ігри та програмне забезпечення",
-    "icon": "path/to/game_icon.png"
+    "title": "Смартфони",
+    "category": "Smartphone",
+    "icon": "path/to/smartphone_icon.png"
   },
   {
     "id": 4,
-    "title": "Аксесуари",
-    "icon": "path/to/accessories_icon.png"
+    "title": "Програмне забезпечення",
+    "category": "Software",
+    "icon": "path/to/game_icon.png"
   },
   {
     "id": 5,
-    "title": "Розумний дім",
-    "icon": "path/to/smart_home_icon.png"
+    "title": "Аксесуари",
+    "category": "Accessories",
+    "icon": "path/to/accessories_icon.png"
   },
   {
     "id": 6,
-    "title": "Телевізори та мультимедія",
+    "title": "Розумний дім",
+    "category": "SmartHome",
     "icon": "path/to/smart_home_icon.png"
   },
   {
     "id": 7,
-    "title": "Xiomi",
+    "title": "Телевізори",
+    "category": "TV",
     "icon": "path/to/smart_home_icon.png"
   },
   {
     "id": 8,
-    "title": "Apple",
+    "title": "Для кухні",
+    "category": "Kitchen",
     "icon": "path/to/smart_home_icon.png"
   }
 ]
