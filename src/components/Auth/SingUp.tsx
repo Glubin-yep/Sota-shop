@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, notification } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./Auth.css";
 import SignIn from "./SingIn"; // Adjust the path if necessary
+import AuthService from "../../service/AuthService";
 
-const SignUp: React.FC = () => {
+const SignUp: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [isSignIn, setIsSignIn] = useState(false); // State to toggle between Sign Up and Sign In
 
@@ -14,14 +15,24 @@ const SignUp: React.FC = () => {
     confirm: string;
   }) => {
     setLoading(true);
-    try {
-      console.log("Received values:", values);
-      // Add API call here to handle sign up
-    } catch (error) {
-      console.error("Error during sign up:", error);
-    } finally {
-      setLoading(false);
-    }
+    AuthService.registration(values.email, values.password)
+      .then(() => {
+        notification.success({
+          message: "Реєстрація пройшла успішно!",
+          placement: "topRight",
+        });
+        onClose();
+      })
+      .catch(() => {
+        notification.error({
+          message: "Реєстрацію не виконано",
+          description: "Така пошта вже занята",
+          placement: "topRight",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const changeAuthMode = () => {
@@ -29,7 +40,7 @@ const SignUp: React.FC = () => {
   };
 
   if (isSignIn) {
-    return <SignIn />;
+    return <SignIn onClose={onClose} />;
   }
 
   return (

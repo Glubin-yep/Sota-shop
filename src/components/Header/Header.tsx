@@ -6,16 +6,20 @@ import logo from "../../assets/LogoPlaceholder.png";
 import ProductService from "../../service/ProductService";
 import { ProductType } from "../../Types/ProductType";
 import SignIn from "../Auth/SingIn";
+import AuthService from "../../service/AuthService";
+import UserPage from "../UserPage/UserPage";
 
 const { Header } = Layout;
-
+interface HeaderProps {
+  onChangeContent: (content: React.ReactNode) => void;
+}
 interface ProductData {
   id: string;
   name: string;
   category: string;
 }
 
-const MyHeader: React.FC = () => {
+const MyHeader: React.FC<HeaderProps> = ({ onChangeContent }) => {
   const [data, setData] = useState<ProductType[] | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<ProductData[] | null>(null);
@@ -44,7 +48,11 @@ const MyHeader: React.FC = () => {
     }
   }, [data, searchQuery]);
 
-  const handleAvatarClick = () => {
+  const handleAvatarClick = async () => {
+    console.log(await AuthService.isValidToken());
+    if ((await AuthService.isValidToken()) == true) {
+      return onChangeContent(<UserPage />);
+    }
     setIsSignUpVisible(true);
   };
 
@@ -101,7 +109,7 @@ const MyHeader: React.FC = () => {
         onCancel={handleModalClose}
         footer={null}
       >
-        <SignIn />
+        <SignIn onClose={handleModalClose} />
       </Modal>
     </Header>
   );

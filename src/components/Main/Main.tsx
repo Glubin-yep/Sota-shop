@@ -18,7 +18,7 @@ const Main: React.FC = () => {
 
   return (
     <Layout className="layout">
-      <Header />
+      <Header onChangeContent={changeContent} />
       <Slider onChangeContent={changeContent} />
       <AntContent className="content">
         <AuthWrapper>{activeContent}</AuthWrapper>

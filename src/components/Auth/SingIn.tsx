@@ -1,23 +1,34 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, notification } from "antd";
 import { UserOutlined, LockOutlined, GoogleOutlined } from "@ant-design/icons";
 import "./Auth.css";
 import SignUp from "./SingUp"; // Adjust the path if necessary
+import AuthService from "../../service/AuthService";
 
-const SignIn: React.FC = () => {
+const SignIn: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false); // State to toggle between Sign In and Sign Up
 
   const onFinish = async (values: { email: string; password: string }) => {
     setLoading(true);
-    try {
-      console.log("Received values:", values);
-      // Add API call here to handle sign in
-    } catch (error) {
-      console.error("Error during sign in:", error);
-    } finally {
-      setLoading(false);
-    }
+    AuthService.login(values.email, values.password)
+      .then(() => {
+        notification.success({
+          message: "Авторизація пройшла успішно!",
+          placement: "topRight",
+        });
+        onClose();
+      })
+      .catch(() => {
+        notification.error({
+          message: "Авторизацію не виконано",
+          description: "Неправильний пароль або логін",
+          placement: "topRight",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleGoogleSignIn = () => {
@@ -30,7 +41,7 @@ const SignIn: React.FC = () => {
   };
 
   if (isSignUp) {
-    return <SignUp />;
+    return <SignUp onClose={onClose} />;
   }
 
   return (
