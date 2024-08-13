@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Input, Badge, Avatar, Layout } from "antd";
+import { Input, Badge, Avatar, Layout, Modal } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-//import ItemsService from "../../services/ItemsService";
 import "./Header.css";
 import logo from "../../assets/LogoPlaceholder.png";
 import ProductService from "../../service/ProductService";
 import { ProductType } from "../../Types/ProductType";
+import SignIn from "../Auth/SingIn";
 
 const { Header } = Layout;
 
@@ -20,6 +20,7 @@ const MyHeader: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<ProductData[] | null>(null);
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
+  const [isSignUpVisible, setIsSignUpVisible] = useState<boolean>(false);
 
   useEffect(() => {
     getData();
@@ -42,6 +43,14 @@ const MyHeader: React.FC = () => {
       setFilteredData(filteredProducts);
     }
   }, [data, searchQuery]);
+
+  const handleAvatarClick = () => {
+    setIsSignUpVisible(true);
+  };
+
+  const handleModalClose = () => {
+    setIsSignUpVisible(false);
+  };
 
   return (
     <Header className="header">
@@ -78,8 +87,22 @@ const MyHeader: React.FC = () => {
             <ShoppingCartOutlined style={{ fontSize: "24px" }} />
           </a>
         </Badge>
-        <Avatar size="large" icon={<UserOutlined />} className="user-avatar" />
+        <Avatar
+          size="large"
+          icon={<UserOutlined />}
+          className="user-avatar"
+          onClick={handleAvatarClick}
+        />
       </div>
+
+      {/* SignUp Modal */}
+      <Modal
+        visible={isSignUpVisible}
+        onCancel={handleModalClose}
+        footer={null}
+      >
+        <SignIn />
+      </Modal>
     </Header>
   );
 };
