@@ -32,7 +32,10 @@ const SignIn: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   const handleGoogleSignIn = () => {
-    // Handle Google Sign-In here (logic will be added later)
+    notification.info({
+      message: "Функціонал в розробці",
+      placement: "topRight",
+    });
     console.log("Google Sign-In clicked");
   };
 
