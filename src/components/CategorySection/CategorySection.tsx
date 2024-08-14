@@ -10,6 +10,7 @@ interface CategorySectionProps {
   titleTop: string;
   data: ProductType[] | null;
   onCardClick: (id: string) => void;
+  onCardAllClick: (category: string) => void;
 }
 
 const CategorySection: React.FC<CategorySectionProps> = ({
@@ -17,6 +18,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({
   titleTop,
   data,
   onCardClick,
+  onCardAllClick,
 }) => {
   const filteredData = data?.filter((item) => item.category === category);
 
@@ -63,12 +65,13 @@ const CategorySection: React.FC<CategorySectionProps> = ({
                 </Badge>
               </div>
             ))}
-            <div className="card card--view-all">
-              <Link to={`/category/${category}`} className="card--href">
-                <div className="view-all--content">
-                  <span className="view-all--text">View All {category}</span>
-                </div>
-              </Link>
+            <div
+              className="card card--view-all"
+              onClick={() => onCardAllClick(category)}
+            >
+              <div className="view-all--content">
+                <span className="view-all--text">View All {category}</span>
+              </div>
             </div>
           </>
         ) : (

@@ -5,6 +5,7 @@ import categoriesData from "../Sider/Category.json";
 import ProductService from "../../service/ProductService";
 import { ProductType } from "../../Types/ProductType";
 import ProductPage from "../ProductPage/ProductPage";
+import CategoryPage from "../CategoryPage/CategoryPage";
 
 interface ShopPageProps {
   onChangeContent: (content: React.ReactNode) => void;
@@ -46,6 +47,12 @@ export default function ShopPage({ onChangeContent }: ShopPageProps) {
     setSelectedProductID(id);
   };
 
+  const handleCardAllClick = (category: string) => {
+    onChangeContent(
+      <CategoryPage category={category} onChangeContent={onChangeContent} />
+    );
+  };
+
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -61,6 +68,7 @@ export default function ShopPage({ onChangeContent }: ShopPageProps) {
             category={category.category}
             data={data}
             onCardClick={handleCardClick}
+            onCardAllClick={handleCardAllClick}
           />
         ))}
     </div>
