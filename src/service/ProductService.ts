@@ -1,8 +1,6 @@
 import api from "../http";
 import { ProductDetails } from "../Types/ProductDetails";
 import { ProductType } from "../Types/ProductType";
-//import { FileData } from "../Types/FileData";
-//import AuthService from "./AuthService";
 
 export default class ProductService {
   static async getAllProductForMainPage(
