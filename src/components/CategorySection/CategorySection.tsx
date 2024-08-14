@@ -3,7 +3,6 @@ import "./CategorySection.css";
 import { ProductType } from "../../Types/ProductType";
 import { Badge, notification } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 
 interface CategorySectionProps {
   category: string;
