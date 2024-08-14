@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Input,
-  Badge,
-  Avatar,
-  Layout,
-  Modal,
-  notification,
-  AutoComplete,
-} from "antd";
+import { Badge, Avatar, Layout, Modal, notification, AutoComplete } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import "./Header.css";
 import logo from "../../assets/LogoPlaceholder.png";
