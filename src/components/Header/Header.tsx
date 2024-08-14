@@ -65,7 +65,9 @@ const MyHeader: React.FC<HeaderProps> = ({ onChangeContent }) => {
   const handleSelect = (value: string) => {
     const product = filteredData?.find((p) => p.name === value);
     if (product) {
-      onChangeContent(<ProductDetail id={product.id} />);
+      onChangeContent(
+        <ProductDetail id={product.id} onChangeContent={onChangeContent} />
+      );
       setSearchQuery(""); // Очистити поле пошуку
     }
   };

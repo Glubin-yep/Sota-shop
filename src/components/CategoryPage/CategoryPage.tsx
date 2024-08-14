@@ -60,7 +60,12 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
                 className="card"
                 key={product.id}
                 onClick={() =>
-                  onChangeContent(<ProductDetail id={product.id} />)
+                  onChangeContent(
+                    <ProductDetail
+                      id={product.id}
+                      onChangeContent={onChangeContent}
+                    />
+                  )
                 }
               >
                 <img

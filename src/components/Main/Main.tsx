@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import Slider from "../Sider/Sider";
 import ShopPage from "../ShopPage/ShopPage";
@@ -8,18 +8,16 @@ import Header from "../Header/Header";
 const { Content: AntContent } = Layout;
 
 const Main: React.FC = () => {
-  const [activeContent, setActiveContent] = useState<React.ReactNode>(
-    <ShopPage />
-  );
+  const [activeContent, setActiveContent] = useState<React.ReactNode>();
 
-  const changeContent = (content: React.ReactNode) => {
-    setActiveContent(content);
-  };
+  useEffect(() => {
+    setActiveContent(<ShopPage onChangeContent={setActiveContent} />);
+  }, []);
 
   return (
     <Layout className="layout">
-      <Header onChangeContent={changeContent} />
-      <Slider onChangeContent={changeContent} />
+      <Header onChangeContent={setActiveContent} />
+      <Slider onChangeContent={setActiveContent} />
       <AntContent className="content">
         <AuthWrapper>{activeContent}</AuthWrapper>
       </AntContent>

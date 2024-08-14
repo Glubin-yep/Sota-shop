@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Badge, notification } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Badge, Button, notification } from "antd";
+import { ShoppingCartOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import "./ProductPage.css";
 import ProductService from "../../service/ProductService";
 import { ProductDetails } from "../../Types/ProductDetails";
 import LoadingScreen from "../Loader/Loader";
 import DeliveryInfo from "../DeliveryInfo/DeliveryInfo";
+import ShopPage from "../ShopPage/ShopPage";
 
 interface ProductDetailProps {
   id: string;
+  onChangeContent: (content: React.ReactNode) => void; // Додано пропс для обробки повернення на головну
 }
 
-const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
+const ProductDetail: React.FC<ProductDetailProps> = ({
+  id,
+  onChangeContent,
+}) => {
   const [product, setProduct] = useState<ProductDetails | null>(null);
 
   useEffect(() => {
@@ -25,7 +30,6 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
     };
 
     fetchProduct();
-    console.log(product);
   }, [id]);
 
   if (!product) {
@@ -268,6 +272,16 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
 
   return (
     <div className="product-detail">
+      <Button
+        type="link"
+        icon={<ArrowLeftOutlined />}
+        onClick={() =>
+          onChangeContent(<ShopPage onChangeContent={onChangeContent} />)
+        }
+        className="back-button"
+      >
+        Повернутися на головну
+      </Button>
       <div className="product-detail--container">
         <img
           src={product.photoURL}

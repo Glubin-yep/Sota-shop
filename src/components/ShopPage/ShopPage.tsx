@@ -6,7 +6,11 @@ import ProductService from "../../service/ProductService";
 import { ProductType } from "../../Types/ProductType";
 import ProductPage from "../ProductPage/ProductPage";
 
-export default function ShopPage() {
+interface ShopPageProps {
+  onChangeContent: (content: React.ReactNode) => void;
+}
+
+export default function ShopPage({ onChangeContent }: ShopPageProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<ProductType[] | null>(null);
   const [selectedProductID, setSelectedProductID] = useState<string | null>(
@@ -30,29 +34,35 @@ export default function ShopPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (selectedProductID) {
+      onChangeContent(
+        <ProductPage id={selectedProductID} onChangeContent={onChangeContent} />
+      );
+    }
+  }, [selectedProductID, onChangeContent]);
+
   const handleCardClick = (id: string) => {
     setSelectedProductID(id);
   };
 
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <div className="main">
-      {isLoading ? (
-        <LoadingScreen />
-      ) : selectedProductID ? (
-        <ProductPage id={selectedProductID} />
-      ) : (
-        <>
-          {categoriesData.map((category) => (
-            <CategorySection
-              key={category.id}
-              titleTop={category.title}
-              category={category.category}
-              data={data}
-              onCardClick={handleCardClick}
-            />
-          ))}
-        </>
-      )}
+      {!selectedProductID &&
+        data &&
+        categoriesData.map((category) => (
+          <CategorySection
+            key={category.id}
+            titleTop={category.title}
+            category={category.category}
+            data={data}
+            onCardClick={handleCardClick}
+          />
+        ))}
     </div>
   );
 }

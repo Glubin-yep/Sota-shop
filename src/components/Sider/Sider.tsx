@@ -25,7 +25,7 @@ const Slider: React.FC<SliderProps> = ({ onChangeContent }) => {
   const handleMenuClick = (contentKey: string) => {
     switch (contentKey) {
       case "0":
-        onChangeContent(<ShopPage />);
+        onChangeContent(<ShopPage onChangeContent={onChangeContent} />);
         break;
       case "1":
         onChangeContent(
