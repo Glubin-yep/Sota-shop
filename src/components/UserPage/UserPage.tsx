@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Card, List, Typography, Avatar, Badge, Button, Divider } from "antd";
+import {
+  Card,
+  List,
+  Typography,
+  Avatar,
+  Badge,
+  Button,
+  Divider,
+  notification,
+} from "antd";
 import { EditOutlined, LogoutOutlined } from "@ant-design/icons";
 import "./UserPage.css";
 import UserService from "../../service/UserService";
@@ -8,6 +17,7 @@ import { UserInfoType } from "../../Types/UserInfoType";
 import LoadingScreen from "../Loader/Loader";
 import { ProductDetails } from "../../Types/ProductDetails";
 import moment from "moment";
+import AuthService from "../../service/AuthService";
 
 const { Title, Text } = Typography;
 
@@ -51,12 +61,19 @@ const PersonalCabinet: React.FC = () => {
   }, []);
 
   const handleEditProfile = () => {
-    // Логіка редагування профілю
+    notification.info({
+      message: "Функціонал в розробці",
+      placement: "topRight",
+    });
+
     console.log("Edit profile clicked");
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     // Логіка розлогінювання
+    if (await AuthService.logout()) {
+      return (window.location.href = "/");
+    }
     console.log("Logout clicked");
   };
 
@@ -76,7 +93,7 @@ const PersonalCabinet: React.FC = () => {
                 <Text strong>Email: </Text>
                 <Text>{userInfo?.email}</Text>
                 <br />
-                <Title level={5}>Адреса доставки</Title>
+                <Title level={5}>Адреса для доставки</Title>
                 <Text>{userInfo?.address}</Text>
               </div>
             </div>

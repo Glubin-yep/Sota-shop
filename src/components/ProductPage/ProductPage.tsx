@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Badge } from "antd";
+import { Badge, notification } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import "./ProductPage.css";
 import ProductService from "../../service/ProductService";
@@ -296,7 +296,15 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
           {product.category === "Kitchen" && renderKitchenDetails()}
 
           <Badge className="product-detail--button">
-            <a href="/cart" className="product-detail--cart-link">
+            <a
+              className="product-detail--cart-link"
+              onClick={() =>
+                notification.info({
+                  message: "Функціонал в розробці",
+                  placement: "topRight",
+                })
+              }
+            >
               <ShoppingCartOutlined style={{ fontSize: "24px" }} />
               Добавити у корзину
             </a>

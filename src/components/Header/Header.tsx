@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Input, Badge, Avatar, Layout, Modal } from "antd";
+import {
+  Input,
+  Badge,
+  Avatar,
+  Layout,
+  Modal,
+  notification,
+  AutoComplete,
+} from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import "./Header.css";
 import logo from "../../assets/LogoPlaceholder.png";
@@ -8,22 +16,25 @@ import { ProductType } from "../../Types/ProductType";
 import SignIn from "../Auth/SingIn";
 import AuthService from "../../service/AuthService";
 import UserPage from "../UserPage/UserPage";
+import ProductDetail from "../ProductPage/ProductPage";
 
 const { Header } = Layout;
+
 interface HeaderProps {
   onChangeContent: (content: React.ReactNode) => void;
 }
+
 interface ProductData {
   id: string;
   name: string;
   category: string;
+  photoURL: string;
 }
 
 const MyHeader: React.FC<HeaderProps> = ({ onChangeContent }) => {
   const [data, setData] = useState<ProductType[] | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<ProductData[] | null>(null);
-  const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
   const [isSignUpVisible, setIsSignUpVisible] = useState<boolean>(false);
 
   useEffect(() => {
@@ -49,8 +60,7 @@ const MyHeader: React.FC<HeaderProps> = ({ onChangeContent }) => {
   }, [data, searchQuery]);
 
   const handleAvatarClick = async () => {
-    console.log(await AuthService.isValidToken());
-    if ((await AuthService.isValidToken()) == true) {
+    if (await AuthService.isValidToken()) {
       return onChangeContent(<UserPage />);
     }
     setIsSignUpVisible(true);
@@ -60,38 +70,59 @@ const MyHeader: React.FC<HeaderProps> = ({ onChangeContent }) => {
     setIsSignUpVisible(false);
   };
 
+  const handleSelect = (value: string) => {
+    const product = filteredData?.find((p) => p.name === value);
+    if (product) {
+      onChangeContent(<ProductDetail id={product.id} />);
+      setSearchQuery(""); // Очистити поле пошуку
+    }
+  };
+
+  const handleSearch = (value: string) => {
+    setSearchQuery(value);
+  };
+
+  const options =
+    filteredData?.map((product) => ({
+      value: product.name,
+      label: (
+        <div className="product-window-li">
+          <img
+            src={product.photoURL}
+            className="product-photo"
+            alt={product.name}
+          />
+          {product.name}
+        </div>
+      ),
+    })) || [];
+
   return (
     <Header className="header">
       <div className="header-left">
         <img src={logo} alt="Logo" className="logo" />
       </div>
       <div className="header-middle">
-        <Input.Search
-          className="search-bar"
+        <AutoComplete
+          options={options}
+          onSelect={handleSelect}
+          onSearch={handleSearch}
           placeholder="Пошук..."
+          style={{ width: 600 }}
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onFocus={() => setIsSearchFocused(true)}
-          onBlur={() => setIsSearchFocused(false)}
-          style={{ width: 400 }}
+          onChange={setSearchQuery}
         />
-        <div className="product-window">
-          {isSearchFocused && filteredData && (
-            <ul>
-              {filteredData.map((product) => (
-                <li key={product.id} className="product-window-li">
-                  <a href={`/items/${product.category}/${product.id}`}>
-                    {product.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
       </div>
       <div className="header-right">
         <Badge className="cart-badge">
-          <a href="/cart">
+          <a
+            onClick={() =>
+              notification.info({
+                message: "Функціонал в розробці",
+                placement: "topRight",
+              })
+            }
+          >
             <ShoppingCartOutlined style={{ fontSize: "24px" }} />
           </a>
         </Badge>

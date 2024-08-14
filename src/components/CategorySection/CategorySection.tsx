@@ -1,7 +1,7 @@
 import React from "react";
 import "./CategorySection.css";
 import { ProductType } from "../../Types/ProductType";
-import { Badge } from "antd";
+import { Badge, notification } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
@@ -50,7 +50,14 @@ const CategorySection: React.FC<CategorySectionProps> = ({
                 </div>
                 <span className="card--price">{item.price} грн.</span>
                 <Badge className="card--button">
-                  <a href="/cart">
+                  <a
+                    onClick={() =>
+                      notification.info({
+                        message: "Функціонал в розробці",
+                        placement: "topRight",
+                      })
+                    }
+                  >
                     <ShoppingCartOutlined style={{ fontSize: "24px" }} />
                   </a>
                 </Badge>
