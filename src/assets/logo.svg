@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #231f20;
+      }
+
+      .cls-1, .cls-2 {
+        letter-spacing: .15em;
+      }
+
+      .cls-3 {
+        font-family: ArialMT, Arial;
+        font-size: 49.79px;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #ceb66a;
+        stroke-miterlimit: 10;
+        stroke-width: 4px;
+      }
+
+      .cls-5 {
+        font-family: Arial-BoldMT, Arial;
+        font-size: 117.08px;
+        font-weight: 700;
+      }
+
+      .cls-5, .cls-6 {
+        fill: #ffda00;
+      }
+
+      .cls-6 {
+        letter-spacing: .15em;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="cls-4" points="289.7 181.7 210.84 181.7 171.4 250 210.84 318.3 289.7 318.3 329.14 250 289.7 181.7"/>
+    <polygon class="cls-4" points="171.66 113.4 92.8 113.4 53.36 181.7 92.8 250 171.66 250 211.1 181.7 171.66 113.4"/>
+    <polygon class="cls-4" points="289.7 45.1 210.84 45.1 171.4 113.4 210.84 181.7 289.7 181.7 329.14 113.4 289.7 45.1"/>
+    <polygon class="cls-4" points="407.2 113.4 328.34 113.4 288.9 181.7 328.34 250 407.2 250 446.64 181.7 407.2 113.4"/>
+    <polygon class="cls-4" points="407.2 250 328.34 250 288.9 318.3 328.34 386.6 407.2 386.6 446.64 318.3 407.2 250"/>
+    <polygon class="cls-4" points="289.43 318.3 210.57 318.3 171.13 386.6 210.57 454.9 289.43 454.9 328.87 386.6 289.43 318.3"/>
+    <polygon class="cls-4" points="171.66 250 92.8 250 53.36 318.3 92.8 386.6 171.66 386.6 211.1 318.3 171.66 250"/>
+  </g>
+  <text class="cls-5" transform="translate(85.07 256.53)"><tspan x="0" y="0">СОТА</tspan></text>
+  <text class="cls-3" transform="translate(0 322.99)"><tspan class="cls-6" x="0" y="0">СТУДІЯ</tspan><tspan class="cls-1" x="226.34" y="0"> </tspan><tspan class="cls-2" x="247.64" y="0">ТЕХНІКИ</tspan></text>
+</svg>
