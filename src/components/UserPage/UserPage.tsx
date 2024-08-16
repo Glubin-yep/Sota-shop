@@ -13,11 +13,11 @@ import { EditOutlined, LogoutOutlined } from '@ant-design/icons'
 import './UserPage.css'
 import UserService from '../../services/UserService'
 import ProductService from '../../services/ProductService'
-import { UserInfoType } from '../../types/UserInfoType'
+import { UserInfoType } from 'types/UserInfoType'
 import LoadingScreen from '../Loader/Loader'
-import { ProductDetails } from '../../types/ProductDetails'
+import { ProductDetails } from 'types/ProductDetails'
 import moment from 'moment'
-import AuthService from 'services/auth.service.ts'
+import { authService } from 'services/auth.service.ts'
 
 const { Title, Text } = Typography
 
@@ -32,7 +32,7 @@ const PersonalCabinet: React.FC = () => {
 		async function fetchData() {
 			setIsLoading(true)
 			try {
-				const response = await UserService.getUserInfo()
+				const response = await UserService.getProfile()
 				setUserInfo(response)
 
 				if (response.delivery) {
@@ -74,7 +74,7 @@ const PersonalCabinet: React.FC = () => {
 
 	const handleLogout = async () => {
 		// Логіка розлогінювання
-		if (await AuthService.logout()) {
+		if (await authService.logout()) {
 			return (window.location.href = '/')
 		}
 		console.log('Logout clicked')
