@@ -8,8 +8,8 @@ import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
 interface IInput {
 	formRegister: UseFormRegister<TAuthForm>
 	errors: FieldErrors<TAuthForm>
-	title: 'email' | 'password' | 'name'
-	validationRules?: RegisterOptions<TAuthForm, 'email' | 'password' | 'name'>
+	title: 'email' | 'password'
+	validationRules?: RegisterOptions<TAuthForm, 'email' | 'password'>
 	type?: 'email' | 'text' | 'password'
 }
 
