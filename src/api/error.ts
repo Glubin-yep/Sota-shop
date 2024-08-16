@@ -1,12 +1,23 @@
+import { AxiosError } from 'axios'
+
 export const getContentType = () => ({
 	'Content-Type': 'application/json'
 })
 
-export const errorCatch = (error: any): string => {
-	const message = error?.response?.data?.message
+type ErrorResponse = {
+	message?: string | string[]
+}
+
+export const errorCatch = (error: AxiosError): string => {
+	const message =
+		error?.response?.data &&
+		typeof error.response.data === 'object' &&
+		'message' in error.response.data
+			? (error.response.data as ErrorResponse).message
+			: null
 
 	return message
-		? typeof error.response.data.message === 'object'
+		? Array.isArray(message)
 			? message[0]
 			: message
 		: error.message
