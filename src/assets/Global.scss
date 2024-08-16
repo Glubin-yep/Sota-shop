@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-text: #000000;
+  --app-background: #ffffff;
+  --header-background: #000;
+
+  --button-background: #ffffff;
+  --button-text: #000000;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  opacity: 0.2 !important;
+}
+
+.button {
+  @apply rounded-xl px-16 py-2 font-bold bg-button-bg text-button-text;
+
+  &:not(&:disabled) {
+    @apply hover:shadow-lg;
+  }
+
+  &.button-small {
+    @apply px-8 py-2 text-sm;
+  }
+
+  &.button-large {
+    @apply px-28 py-4 text-2xl font-bold;
+  }
+}
