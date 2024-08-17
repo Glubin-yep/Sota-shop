@@ -6,15 +6,17 @@ import React, {
 	useState
 } from 'react'
 
-type TypeOut = {
-	ref: React.RefObject<HTMLElement>
+type TypeOut<T extends HTMLElement> = {
+	ref: React.RefObject<T>
 	isShow: boolean
 	setIsShow: Dispatch<SetStateAction<boolean>>
 }
 
-export const useOutside = (initialIsVisible: boolean): TypeOut => {
+export const useOutside = <T extends HTMLElement>(
+	initialIsVisible: boolean
+): TypeOut<T> => {
 	const [isShow, setIsShow] = useState(initialIsVisible)
-	const ref = useRef<HTMLElement>(null)
+	const ref = useRef<T>(null)
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (ref.current && !ref.current.contains(event.target as Node)) {

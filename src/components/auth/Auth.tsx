@@ -1,18 +1,16 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TAuthForm } from 'types/auth.types.ts'
 import AuthInput from '../inputs/AuthInput.tsx'
 import { validEmail } from 'utils/valid-email.ts'
 import AuthFormButtons from './AuthFormButtons.tsx'
 import styles from './Auth.module.scss'
-import { useAuthRedirect } from 'hooks/useAuthRedirect.ts'
 import { useAuth } from 'hooks/useAuth.ts'
 import { useActions } from 'hooks/useActions.ts'
 import Loader from 'components/Loader/Loader.tsx'
+import useOutsideClick from 'hooks/useOutsideFormClick.ts'
 
-function Auth() {
-	useAuthRedirect()
-
+function Auth({ onClose }: { onClose: () => void }) {
 	const { isLoading } = useAuth()
 	const { login, register } = useActions()
 
@@ -35,47 +33,57 @@ function Auth() {
 		reset()
 	}
 
-	if (isLoading) {
-		return <Loader />
-	}
+	const closeAuthForm = useCallback(() => {
+		onClose()
+	}, [onClose])
+
+	const ref = useOutsideClick(closeAuthForm)
 
 	return (
 		<section className={styles.auth}>
-			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-				<h1>{type === 'login' ? 'Welcome back!' : "Let's create account"}</h1>
-				<div>
-					<AuthInput
-						formRegister={formRegister}
-						errors={errors}
-						title='email'
-						validationRules={{
-							required: 'Email is required',
-							pattern: {
-								value: validEmail,
-								message: 'Please enter a valid email address'
-							}
-						}}
+			{isLoading ? (
+				<Loader />
+			) : (
+				<form
+					ref={ref}
+					onSubmit={handleSubmit(onSubmit)}
+					className={styles.form}
+				>
+					<h1>{type === 'login' ? 'Welcome back!' : "Let's create account"}</h1>
+					<div>
+						<AuthInput
+							formRegister={formRegister}
+							errors={errors}
+							title='email'
+							validationRules={{
+								required: 'Email is required',
+								pattern: {
+									value: validEmail,
+									message: 'Please enter a valid email address'
+								}
+							}}
+						/>
+						<AuthInput
+							formRegister={formRegister}
+							errors={errors}
+							title='password'
+							validationRules={{
+								required: 'Password is required',
+								minLength: {
+									value: 6,
+									message: 'Password mush contain at least 6 characters'
+								}
+							}}
+							type='password'
+						/>
+					</div>
+					<AuthFormButtons
+						type={type}
+						setType={setType}
+						clearErrors={clearErrors}
 					/>
-					<AuthInput
-						formRegister={formRegister}
-						errors={errors}
-						title='password'
-						validationRules={{
-							required: 'Password is required',
-							minLength: {
-								value: 6,
-								message: 'Password mush contain at least 6 characters'
-							}
-						}}
-						type='password'
-					/>
-				</div>
-				<AuthFormButtons
-					type={type}
-					setType={setType}
-					clearErrors={clearErrors}
-				/>
-			</form>
+				</form>
+			)}
 		</section>
 	)
 }
