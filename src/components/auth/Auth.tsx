@@ -9,6 +9,7 @@ import { useAuth } from 'hooks/useAuth.ts'
 import { useActions } from 'hooks/useActions.ts'
 import Loader from 'components/Loader/Loader.tsx'
 import useOutsideClick from 'hooks/useOutsideFormClick.ts'
+import { IoMdClose } from 'react-icons/io'
 
 function Auth({ onClose }: { onClose: () => void }) {
 	const { isLoading } = useAuth()
@@ -49,17 +50,23 @@ function Auth({ onClose }: { onClose: () => void }) {
 					onSubmit={handleSubmit(onSubmit)}
 					className={styles.form}
 				>
-					<h1>{type === 'login' ? 'Welcome back!' : "Let's create account"}</h1>
-					<div>
+					<div className={styles.header}>
+						<h1>{type === 'login' ? 'Вхід' : 'Реєстрація'}</h1>
+						<IoMdClose
+							onClick={onClose}
+							className='cursor-pointer w-7 h-auto'
+						/>
+					</div>
+					<div className={styles.inputs}>
 						<AuthInput
 							formRegister={formRegister}
 							errors={errors}
 							title='email'
 							validationRules={{
-								required: 'Email is required',
+								required: 'Необхідно ввести email',
 								pattern: {
 									value: validEmail,
-									message: 'Please enter a valid email address'
+									message: 'Перевірте правильність формату email'
 								}
 							}}
 						/>
@@ -68,10 +75,10 @@ function Auth({ onClose }: { onClose: () => void }) {
 							errors={errors}
 							title='password'
 							validationRules={{
-								required: 'Password is required',
+								required: 'Необхідно ввести пароль',
 								minLength: {
 									value: 6,
-									message: 'Password mush contain at least 6 characters'
+									message: 'Пароль повинен бути не менше 6 символів'
 								}
 							}}
 							type='password'

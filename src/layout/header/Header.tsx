@@ -58,8 +58,13 @@ function Header() {
 					</>
 				) : (
 					<>
-						<Button type='button' onClick={handleOpenAuthForm}>
-							Login
+						<Button
+							type='button'
+							onClick={handleOpenAuthForm}
+							variant='light'
+							size='medium'
+						>
+							Ввійти
 						</Button>
 						{isOpenAuthForm && (
 							<Auth onClose={() => setIsOpenAuthForm(false)} />
