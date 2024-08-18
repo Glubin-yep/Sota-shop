@@ -7,11 +7,11 @@ import './Sider.css'
 //import History from "../Content/History/History";
 //import Profile from "../Content/Profile/Profile";
 //import Logout from "../auth/Logout/Logout";
-import categoriesData from './Category.json' // Assuming your JSON file is named categories.json
+import categoriesData from '../sidebar/Category.json' // Assuming your JSON file is named categories.json
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa' // Import social media icons
 import CategoryPage from '../CategoryPage/CategoryPage'
 import ShopPage from '../ShopPage/ShopPage'
-import { Category } from '../../types/Category.enums'
+import { Category } from 'types/Category.enums'
 
 const { Sider } = Layout
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import CategorySection from '../CategorySection/CategorySection'
 import LoadingScreen from '../Loader/Loader'
-import categoriesData from '../Sider/Category.json'
+import categoriesData from '../sidebar/Category.json'
 import ProductService from '../../services/ProductService'
-import { ProductType } from '../../types/ProductType'
+import { ProductType } from 'types/ProductType'
 import ProductPage from '../ProductPage/ProductPage'
 import CategoryPage from '../CategoryPage/CategoryPage'
 

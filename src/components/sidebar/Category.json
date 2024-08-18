@@ -3,48 +3,48 @@
     "id": 1,
     "title": "Ноутбуки",
     "category": "Laptop",
-    "icon": "path/to/laptop_icon.png"
+    "icon": "public/catalog/laptop.png"
   },
   {
     "id": 2,
     "title": "Комп'ютери",
     "category": "Computer",
-    "icon": "path/to/laptop_icon.png"
+    "icon": "public/catalog/monitor.png"
   },
   {
     "id": 3,
     "title": "Смартфони",
     "category": "Smartphone",
-    "icon": "path/to/smartphone_icon.png"
+    "icon": "public/catalog/smartphone.png"
   },
   {
     "id": 4,
     "title": "Програмне забезпечення",
     "category": "Software",
-    "icon": "path/to/game_icon.png"
+    "icon": "public/catalog/api.png"
   },
   {
     "id": 5,
     "title": "Аксесуари",
     "category": "Accessories",
-    "icon": "path/to/accessories_icon.png"
+    "icon": "public/catalog/power.png"
   },
   {
     "id": 6,
     "title": "Розумний дім",
     "category": "SmartHome",
-    "icon": "path/to/smart_home_icon.png"
+    "icon": "public/catalog/smart-home.png"
   },
   {
     "id": 7,
     "title": "Телевізори",
     "category": "TV",
-    "icon": "path/to/smart_home_icon.png"
+    "icon": "public/catalog/smart-tv.png"
   },
   {
     "id": 8,
     "title": "Для кухні",
     "category": "Kitchen",
-    "icon": "path/to/smart_home_icon.png"
+    "icon": "public/catalog/kitchen.png"
   }
 ]
