@@ -33,11 +33,29 @@
       }
 
       > div {
-        @apply flex items-center gap-4;
+        @apply flex items-center gap-4 mt-2;
 
-        > img {
-          @apply w-8;
+        > a {
+          > img {
+            @apply w-8;
+          }
         }
+      }
+    }
+
+    > .additionalInfo {
+      @apply px-4 text-center;
+
+      > h1 {
+        @apply font-semibold;
+      }
+
+      > ul {
+        @apply py-4;
+      }
+
+      > p {
+        @apply underline;
       }
     }
   }

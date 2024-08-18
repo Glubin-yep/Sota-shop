@@ -3,48 +3,48 @@
     "id": 1,
     "title": "Ноутбуки",
     "category": "Laptop",
-    "icon": "public/catalog/laptop.png"
+    "icon": "./catalog/laptop.png"
   },
   {
     "id": 2,
     "title": "Комп'ютери",
     "category": "Computer",
-    "icon": "public/catalog/monitor.png"
+    "icon": "./catalog/monitor.png"
   },
   {
     "id": 3,
     "title": "Смартфони",
     "category": "Smartphone",
-    "icon": "public/catalog/smartphone.png"
+    "icon": "./catalog/smartphone.png"
   },
   {
     "id": 4,
     "title": "Програмне забезпечення",
     "category": "Software",
-    "icon": "public/catalog/api.png"
+    "icon": "./catalog/api.png"
   },
   {
     "id": 5,
     "title": "Аксесуари",
     "category": "Accessories",
-    "icon": "public/catalog/power.png"
+    "icon": "./catalog/power.png"
   },
   {
     "id": 6,
     "title": "Розумний дім",
     "category": "SmartHome",
-    "icon": "public/catalog/smart-home.png"
+    "icon": "./catalog/smart-home.png"
   },
   {
     "id": 7,
     "title": "Телевізори",
     "category": "TV",
-    "icon": "public/catalog/smart-tv.png"
+    "icon": "./catalog/smart-tv.png"
   },
   {
     "id": 8,
     "title": "Для кухні",
     "category": "Kitchen",
-    "icon": "public/catalog/kitchen.png"
+    "icon": "./catalog/kitchen.png"
   }
 ]

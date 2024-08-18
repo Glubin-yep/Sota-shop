@@ -3,6 +3,7 @@ import CategoryData from './Category.json'
 import AddressIcon from '../../../public/catalog/pin.png'
 import Instagram from '../../../public/catalog/instagram.png'
 import Facebook from '../../../public/catalog/facebook.png'
+import { Link } from 'react-router-dom'
 
 function Sidebar() {
 	return (
@@ -23,9 +24,23 @@ function Sidebar() {
 				<div className={styles.socialMedia}>
 					<h1>Ми в соціальних мережах</h1>
 					<div>
-						<img src={Instagram} alt='instagram-icon' />
-						<img src={Facebook} alt='facebook-icon' />
+						<Link to='https://instagram.com' target='_blank'>
+							<img src={Instagram} alt='instagram-icon' />
+						</Link>
+						<Link to='https://facebook.com' target='_blank'>
+							<img src={Facebook} alt='facebook-icon' />
+						</Link>
 					</div>
+				</div>
+				<hr />
+				<div className={styles.additionalInfo}>
+					<h1>Інформація про компанію</h1>
+					<ul>
+						<li>Про нас</li>
+						<li>Контакти</li>
+						<li>Ремонт</li>
+					</ul>
+					<p>Умови використання сайту</p>
 				</div>
 				<hr />
 			</div>
