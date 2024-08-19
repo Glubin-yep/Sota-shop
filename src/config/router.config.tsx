@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Home from 'pages/Home.tsx'
+import HomePage from 'pages/HomePage.tsx'
 import Layout from 'layout/Layout.tsx'
 import About from 'pages/About.tsx'
 import Contacts from 'pages/Contacts.tsx'
@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
 		path: '/',
 		element: (
 			<Layout>
-				<Home />
+				<HomePage />
 			</Layout>
 		)
 	},

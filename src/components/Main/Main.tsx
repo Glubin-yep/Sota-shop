@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Layout } from 'antd'
 import ShopPage from '../ShopPage/ShopPage'
 import './Main.css'
-import AuthWrapper from '../Wrappers/AuthWrapper'
 const { Content: AntContent } = Layout
 
 const Main: React.FC = () => {
@@ -12,11 +11,7 @@ const Main: React.FC = () => {
 		setActiveContent(<ShopPage onChangeContent={setActiveContent} />)
 	}, [])
 
-	return (
-		<AntContent className='content'>
-			<AuthWrapper>{activeContent}</AuthWrapper>
-		</AntContent>
-	)
+	return <AntContent className='content'>{activeContent}</AntContent>
 }
 
 export default Main

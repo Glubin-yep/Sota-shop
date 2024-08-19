@@ -1,8 +1,8 @@
 import styles from './Sidebar.module.scss'
 import CategoryData from './Category.json'
-import AddressIcon from '../../../public/catalog/pin.png'
-import Instagram from '../../../public/catalog/instagram.png'
-import Facebook from '../../../public/catalog/facebook.png'
+import AddressIcon from '/catalog/pin.png'
+import Instagram from '/catalog/instagram.png'
+import Facebook from '/catalog/facebook.png'
 import { Link } from 'react-router-dom'
 
 function Sidebar() {
@@ -11,7 +11,7 @@ function Sidebar() {
 			<div className={styles.sidebarContent}>
 				<div className={styles.top}>
 					{CategoryData.map(category => (
-						<div className={styles.sidebarItem}>
+						<div className={styles.sidebarItem} key={category.id}>
 							<img src={category.icon} alt='sidebar-item-icon' />
 							<span>{category.title}</span>
 						</div>

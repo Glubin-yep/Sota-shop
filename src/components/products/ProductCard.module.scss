@@ -1,0 +1,40 @@
+.productCard {
+  @apply w-64 h-[415px] p-4 pt-14 border border-light-gray rounded-xl flex flex-col gap-2 bg-bg-color relative shadow-md cursor-pointer;
+
+  &:hover {
+    @apply shadow-xl;
+  }
+
+  > .productImageWrap {
+    @apply flex-grow flex justify-center items-center min-h-44;
+
+    > img {
+      @apply mix-blend-multiply max-h-40;
+    }
+  }
+
+  > h1 {
+    @apply mt-8 flex-shrink-0;
+    min-height: 3rem;
+  }
+
+  > .cardFooter {
+    @apply flex items-center justify-between;
+
+    > h1 {
+      @apply text-2xl font-semibold;
+
+      > span {
+        @apply text-lg ml-1;
+      }
+    }
+
+    > svg {
+      @apply p-1.5 w-9 h-auto rounded-lg;
+
+      &:hover {
+        @apply bg-light-gray;
+      }
+    }
+  }
+}

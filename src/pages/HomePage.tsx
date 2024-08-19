@@ -1,7 +1,7 @@
 import Main from 'components/Main/Main.tsx'
 
-function Home() {
+function HomePage() {
 	return <Main />
 }
 
-export default Home
+export default HomePage
