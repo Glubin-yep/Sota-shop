@@ -8,7 +8,7 @@ function Layout({ children }: { children: ReactNode }) {
 			<Header />
 			<div className='flex pt-20 gap-2'>
 				<Sidebar />
-				<div className='pl-80 w-full'>{children}</div>
+				<div className='pl-64 w-full'>{children}</div>
 			</div>
 		</main>
 	)

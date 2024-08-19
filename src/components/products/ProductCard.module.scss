@@ -1,5 +1,7 @@
 .productCard {
-  @apply w-64 h-[415px] p-4 pt-14 border border-light-gray rounded-xl flex flex-col gap-2 bg-bg-color relative shadow-md cursor-pointer;
+  @apply p-4 pt-14 border border-light-gray rounded-xl flex flex-col gap-2 bg-bg-color relative shadow-md cursor-pointer;
+  width: calc(16% - 11px);
+  height: 100%;
 
   &:hover {
     @apply shadow-xl;
@@ -15,7 +17,7 @@
 
   > h1 {
     @apply mt-8 flex-shrink-0;
-    min-height: 3rem;
+    min-height: 5rem;
   }
 
   > .cardFooter {

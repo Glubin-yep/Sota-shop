@@ -18,12 +18,6 @@
     "icon": "./catalog/smartphone.png"
   },
   {
-    "id": 4,
-    "title": "Програмне забезпечення",
-    "category": "Software",
-    "icon": "./catalog/api.png"
-  },
-  {
     "id": 5,
     "title": "Аксесуари",
     "category": "Accessories",
