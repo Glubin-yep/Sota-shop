@@ -12,12 +12,12 @@ import {
 import { EditOutlined, LogoutOutlined } from '@ant-design/icons'
 import './UserPage.css'
 import UserService from '../../services/UserService'
-import ProductService from '../../services/ProductService'
 import { UserInfoType } from 'types/UserInfoType'
 import LoadingScreen from '../Loader/Loader'
 import { ProductDetails } from 'types/ProductDetails'
 import moment from 'moment'
 import { authService } from 'services/auth.service.ts'
+import { productService } from 'services/ProductService.ts'
 
 const { Title, Text } = Typography
 
@@ -38,7 +38,7 @@ const PersonalCabinet: React.FC = () => {
 				if (response.delivery) {
 					// Fetch product data
 					const productPromises = response.delivery.map(pkg =>
-						ProductService.getProductByID(pkg.productId).then(product => ({
+						productService.getProductByID(pkg.productId).then(product => ({
 							productId: pkg.productId,
 							product
 						}))
