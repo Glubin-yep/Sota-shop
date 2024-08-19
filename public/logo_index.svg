@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs/>
+  <g transform="matrix(1.053963, 0, 0, 1.011327, -9.801867, -1.618123)" style="">
+    <polygon class="cls-6" points="294.4 166.4 199.3 166.4 151.7 248.8 199.3 331.2 294.4 331.2 342 248.8 294.4 166.4" style="fill: none; stroke: rgb(206, 182, 106); stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <polygon class="cls-6" points="152 84 56.8 84 9.3 166.4 56.8 248.8 152 248.8 199.6 166.4 152 84" style="fill: none; stroke: rgb(206, 182, 106); stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <polygon class="cls-6" points="294.4 1.6 199.3 1.6 151.7 84 199.3 166.4 294.4 166.4 342 84 294.4 1.6" style="fill: none; stroke: rgb(206, 182, 106); stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <polygon class="cls-6" points="436.2 84 341 84 293.4 166.4 341 248.8 436.2 248.8 483.7 166.4 436.2 84" style="fill: none; stroke: rgb(206, 182, 106); stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <polygon class="cls-6" points="436.2 248.8 341 248.8 293.4 331.2 341 413.6 436.2 413.6 483.7 331.2 436.2 248.8" style="fill: none; stroke: rgb(206, 182, 106); stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <polygon class="cls-6" points="294.1 331.2 198.9 331.2 151.3 413.6 198.9 496 294.1 496 341.7 413.6 294.1 331.2" style="fill: none; stroke: rgb(206, 182, 106); stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <polygon class="cls-6" points="152 248.8 56.8 248.8 9.3 331.2 56.8 413.6 152 413.6 199.6 331.2 152 248.8" style="fill: none; stroke: rgb(206, 182, 106); stroke-miterlimit: 10; stroke-width: 4px;"/>
+  </g>
+</svg>

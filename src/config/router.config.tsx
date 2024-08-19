@@ -4,6 +4,7 @@ import Layout from 'layout/Layout.tsx'
 import About from 'pages/About.tsx'
 import Contacts from 'pages/Contacts.tsx'
 import Service from 'pages/Service.tsx'
+import ProductPage from 'components/products/product-page/ProductPage.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -11,6 +12,14 @@ export const router = createBrowserRouter([
 		element: (
 			<Layout>
 				<HomePage />
+			</Layout>
+		)
+	},
+	{
+		path: '/product/:id',
+		element: (
+			<Layout>
+				<ProductPage />
 			</Layout>
 		)
 	},

@@ -4,39 +4,85 @@
   height: 100%;
 
   &:hover {
-    @apply shadow-xl;
+    @apply shadow-xl text-text;
   }
 
-  > .productImageWrap {
-    @apply flex-grow flex justify-center items-center min-h-44;
+  > div {
+    > .productImageWrap {
+      @apply flex-grow flex justify-center items-center min-h-44;
 
-    > img {
-      @apply mix-blend-multiply max-h-40;
+      > img {
+        @apply mix-blend-multiply max-h-40;
+      }
     }
-  }
-
-  > h1 {
-    @apply mt-8 flex-shrink-0;
-    min-height: 5rem;
-  }
-
-  > .cardFooter {
-    @apply flex items-center justify-between;
 
     > h1 {
-      @apply text-2xl font-semibold;
-
-      > span {
-        @apply text-lg ml-1;
-      }
+      @apply mt-8 flex-shrink-0;
+      min-height: 3rem;
     }
 
-    > svg {
-      @apply p-1.5 w-9 h-auto rounded-lg;
+    > .cardFooter {
+      @apply flex items-center justify-between;
 
-      &:hover {
-        @apply bg-light-gray;
+      > h1 {
+        @apply text-2xl font-semibold;
+
+        > span {
+          @apply text-lg ml-1;
+        }
+      }
+
+      > svg {
+        @apply p-1.5 w-9 h-auto rounded-lg;
+
+        &:hover {
+          @apply bg-light-gray;
+        }
       }
     }
   }
+}
+
+.productPage {
+  @apply p-14 flex items-start gap-4;
+
+  > .imageWrap {
+    @apply min-w-[720px] flex items-center;
+  }
+
+  > div {
+    @apply pt-5 flex flex-col gap-2 items-start w-full;
+
+    > .title {
+      @apply text-3xl font-bold;
+    }
+
+    > .brand {
+      @apply italic font-semibold text-xl text-gray;
+    }
+
+    > .rating {
+      @apply flex items-center gap-2 text-lg font-semibold mt-4;
+    }
+
+    > .productPrice {
+      @apply text-4xl font-bold mt-2;
+
+      > span {
+        @apply text-2xl ml-2;
+      }
+    }
+
+    > hr {
+      @apply border-light-gray w-full my-4;
+    }
+
+    > .detailsTitle {
+      @apply text-2xl font-semibold;
+    }
+  }
+}
+
+.detailsItemTitle {
+  @apply font-semibold;
 }
