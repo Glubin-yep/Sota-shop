@@ -23,6 +23,11 @@ function Searchbar() {
 		product.name.toLowerCase().includes(searchQuery.toLowerCase())
 	)
 
+	const handleLinkProduct = () => {
+		setIsShow(false)
+		setSearchQuery('')
+	}
+
 	return (
 		<div className='w-[535px]' ref={ref}>
 			<div className='relative' onClick={() => setIsShow(true)}>
@@ -31,6 +36,7 @@ function Searchbar() {
 					type='text'
 					placeholder='Пошук...'
 					className='w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-border'
+					value={searchQuery}
 					onChange={handleInputChange}
 				/>
 			</div>
@@ -38,7 +44,7 @@ function Searchbar() {
 				<div className='absolute top-[70px] bg-bg-color w-[535px] rounded-xl p-2 px-4 shadow-xl max-h-80 overflow-auto'>
 					{filteredDishes.length > 0 ? (
 						filteredDishes.map(product => (
-							<Link to={`product/${product.id}`}>
+							<Link to={`/product/${product.id}`} onClick={handleLinkProduct}>
 								<SearchbarProductCars product={product} />
 							</Link>
 						))
