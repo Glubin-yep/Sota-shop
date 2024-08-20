@@ -34,7 +34,7 @@ function Header() {
 			<Link to='/'>
 				<img src={LogoImage} alt='logo' className='w-40' />
 			</Link>
-			<Searchbar setSearchQuery={() => {}} />
+			<Searchbar />
 			<div className={styles.userNav} ref={ref}>
 				<Link to='/favorite'>
 					<MdOutlineFavoriteBorder
