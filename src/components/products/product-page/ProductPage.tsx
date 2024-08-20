@@ -9,6 +9,7 @@ import { IoCartOutline } from 'react-icons/io5'
 import styles from '../ProductCard.module.scss'
 import { FaStar } from 'react-icons/fa'
 import { convertPrice } from 'utils/convertPrice.ts'
+import DeliveryInfo from 'components/DeliveryInfo/DeliveryInfo.tsx'
 
 function ProductPage() {
 	const { id } = useParams<{ id: string }>()
@@ -52,6 +53,7 @@ function ProductPage() {
 					<IoCartOutline size={25} />
 					Додати в корзину
 				</Button>
+				<DeliveryInfo />
 			</div>
 		</section>
 	)

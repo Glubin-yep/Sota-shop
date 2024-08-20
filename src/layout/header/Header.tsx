@@ -11,6 +11,7 @@ import HeaderDropdown from 'components/HeaderDropdown.tsx'
 import { useActions } from 'hooks/useActions.ts'
 import { useState } from 'react'
 import Auth from 'components/auth/Auth.tsx'
+import Searchbar from 'components/inputs/Searchbar.tsx'
 
 function Header() {
 	const { isAuthenticated } = useProfile()
@@ -33,6 +34,7 @@ function Header() {
 			<Link to='/'>
 				<img src={LogoImage} alt='logo' className='w-40' />
 			</Link>
+			<Searchbar setSearchQuery={() => {}} />
 			<div className={styles.userNav} ref={ref}>
 				<Link to='/favorite'>
 					<MdOutlineFavoriteBorder
