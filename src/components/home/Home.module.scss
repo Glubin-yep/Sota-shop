@@ -1,0 +1,11 @@
+.productSection {
+  @apply flex flex-col mt-6 px-10;
+
+  > h1 {
+    @apply text-2xl font-semibold;
+  }
+
+  > div {
+    @apply mt-4 flex flex-wrap gap-6;
+  }
+}

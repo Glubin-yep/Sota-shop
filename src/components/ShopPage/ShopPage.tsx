@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import CategorySection from '../CategorySection/CategorySection'
 import LoadingScreen from '../Loader/Loader'
-import categoriesData from '../Sider/Category.json'
-import ProductService from '../../services/ProductService'
-import { ProductType } from '../../types/ProductType'
+import categoriesData from '../sidebar/Category.json'
+import { ProductType } from 'types/ProductType'
 import ProductPage from '../ProductPage/ProductPage'
 import CategoryPage from '../CategoryPage/CategoryPage'
+import { productService } from 'services/ProductService.ts'
 
 interface ShopPageProps {
 	onChangeContent: (content: React.ReactNode) => void
@@ -22,7 +22,7 @@ export default function ShopPage({ onChangeContent }: ShopPageProps) {
 		async function fetchData() {
 			setIsLoading(true)
 			try {
-				const response = await ProductService.getAllProductForMainPage(8)
+				const response = await productService.getAllProductForMainPage(10)
 				setData(response)
 			} catch (error) {
 				console.error('Error fetching data:', error)

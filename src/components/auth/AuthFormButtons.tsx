@@ -10,7 +10,7 @@ interface IAuthFormButtons {
 }
 
 function AuthFormButtons({ type, setType, clearErrors }: IAuthFormButtons) {
-	const buttonTitle = type === 'login' ? 'Login' : 'Register'
+	const buttonTitle = type === 'login' ? 'Ввійти' : 'Зареєструватися'
 
 	const handleChangeFormType = () => {
 		if (type === 'login') {
@@ -27,13 +27,13 @@ function AuthFormButtons({ type, setType, clearErrors }: IAuthFormButtons) {
 			<div>
 				{type === 'login' ? (
 					<p>
-						Don't have an account?{' '}
-						<span onClick={handleChangeFormType}>Let's create it!</span>
+						Ще не маєте профілю?{' '}
+						<span onClick={handleChangeFormType}>Зареєструватися!</span>
 					</p>
 				) : (
 					<p>
-						Already have an account?{' '}
-						<span onClick={handleChangeFormType}>Let's login!</span>
+						Уже маєте профіль?{' '}
+						<span onClick={handleChangeFormType}>Ввійти!</span>
 					</p>
 				)}
 			</div>

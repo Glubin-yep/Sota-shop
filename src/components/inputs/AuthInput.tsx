@@ -4,6 +4,7 @@ import { convertName } from 'utils/convert-name.ts'
 import cn from 'clsx'
 import { useState } from 'react'
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
+import styles from './Inputs.module.scss'
 
 interface IInput {
 	formRegister: UseFormRegister<TAuthForm>
@@ -25,15 +26,20 @@ function AuthInput({
 	validationRules,
 	type
 }: IInput) {
-	const inputTitle = convertName(title)
+	let ukrTitle: 'email' | 'password' | 'пароль' = title
+	if (ukrTitle === 'password') ukrTitle = 'пароль'
+
+	const inputTitle = convertName(ukrTitle)
 	const errorMessage = errors[title]?.message
 	const [inputType, setInputType] = useState(type)
 
 	return (
-		<div className='flex flex-col gap-1 relative'>
+		<div className={styles.input}>
 			<label
 				htmlFor={`form-${title.toLowerCase()}`}
-				className='text-sm text-placeholder'
+				className={cn({
+					[styles.labelError]: !!errorMessage
+				})}
 			>
 				{inputTitle}
 			</label>
@@ -44,21 +50,15 @@ function AuthInput({
 					...validationRules
 				})}
 				placeholder={inputTitle}
-				className={cn(
-					'text-app-text outline-none px-3 py-2 rounded-xl border border-border bg-form-bg placeholder:text-placeholder text-lg',
-					{
-						'border-dark-mode-border focus:border-subcolor': !errorMessage,
-						'border-error focus:border-error': !!errorMessage,
-						'pr-12': type === 'password'
-					}
-				)}
+				className={cn(styles.inputField, {
+					[styles.error]: !!errorMessage,
+					[styles.passwordPadding]: type === 'password'
+				})}
 			/>
 			{type === 'password' && (
 				<PasswordIcons inputType={inputType} setInputType={setInputType} />
 			)}
-			{errorMessage && (
-				<p className='text-error font-semibold text-sm'>{errorMessage}</p>
-			)}
+			{errorMessage && <p>{errorMessage}</p>}
 		</div>
 	)
 }
@@ -70,7 +70,7 @@ const PasswordIcons = ({
 	setInputType
 }: IPasswordIcons) => {
 	return (
-		<div className='absolute right-4 top-[38px]'>
+		<div className='absolute right-4 top-4'>
 			{inputType === 'password' ? (
 				<HiOutlineEye size={20} onClick={() => setInputType('text')} />
 			) : (

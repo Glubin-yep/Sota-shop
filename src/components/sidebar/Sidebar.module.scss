@@ -1,0 +1,92 @@
+.sidebar {
+  @apply w-64 bg-bg-color fixed left-0 top-20 bottom-0 z-40 flex flex-col px-2 pt-8 pb-4 border-r border-light-gray;
+  min-height: calc(100vh - 80px);
+
+  > .sidebarContent {
+    @apply h-full flex flex-col gap-2 w-full justify-between;
+
+    > .top {
+      @apply flex flex-col gap-2;
+    }
+
+    > .bottom {
+      > hr {
+        @apply my-3 border-light-gray;
+      }
+
+      > .socialMedia {
+        @apply px-4 flex flex-col gap-2;
+
+        > h1 {
+          @apply font-semibold;
+        }
+
+        > div {
+          @apply flex items-center gap-4 mt-2;
+
+          > a {
+            > img {
+              @apply w-8;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidebarItem {
+  @apply flex items-center gap-3 min-w-full px-4 py-1 rounded-lg cursor-pointer;
+
+  &:hover {
+    @apply bg-light-gray;
+  }
+
+  > span {
+    @apply w-full whitespace-nowrap;
+  }
+
+  > img {
+    @apply w-5;
+  }
+}
+
+.additionalInfo {
+  @apply px-4 text-center;
+
+  > h1 {
+    @apply font-semibold;
+  }
+
+  > ul {
+    @apply py-4;
+
+    > a {
+      > li {
+        &:hover {
+          @apply text-gray cursor-pointer;
+        }
+      }
+    }
+  }
+
+  > p {
+    @apply underline;
+
+    &:hover {
+      @apply text-gray cursor-pointer;
+    }
+  }
+}
+
+.sidebarAddressItem {
+  @apply flex items-center gap-3 min-w-full px-4 py-1;
+
+  > span {
+    @apply w-full whitespace-nowrap;
+  }
+
+  > img {
+    @apply w-5;
+  }
+}

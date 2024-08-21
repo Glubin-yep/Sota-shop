@@ -3,7 +3,8 @@ import { ReactNode } from 'react'
 
 interface IButton {
 	type: 'button' | 'submit' | 'reset'
-	size?: 'small' | 'default' | 'large'
+	size?: 'small' | 'medium' | 'default' | 'large'
+	variant?: 'light'
 	onClick?: () => void
 	className?: string
 	disabled?: boolean
@@ -13,6 +14,7 @@ interface IButton {
 function Button({
 	type,
 	size = 'default',
+	variant,
 	onClick,
 	className,
 	disabled = false,
@@ -25,7 +27,9 @@ function Button({
 				'button',
 				{
 					'button-small': size === 'small',
-					'button-large': size === 'large'
+					'button-medium': size === 'medium',
+					'button-large': size === 'large',
+					light: variant === 'light'
 				},
 				className
 			)}

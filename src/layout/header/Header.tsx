@@ -9,23 +9,33 @@ import { useProfile } from 'hooks/useProfile.ts'
 import { useOutside } from 'hooks/useOutside.ts'
 import HeaderDropdown from 'components/HeaderDropdown.tsx'
 import { useActions } from 'hooks/useActions.ts'
+import { useState } from 'react'
+import Auth from 'components/auth/Auth.tsx'
+import Searchbar from 'components/inputs/Searchbar.tsx'
 
 function Header() {
 	const { isAuthenticated } = useProfile()
-	const { isShow, setIsShow, ref } = useOutside(false)
+	const [isOpenAuthForm, setIsOpenAuthForm] = useState(false)
+	const { isShow, setIsShow, ref } = useOutside<HTMLDivElement>(false)
 	const { logout } = useActions()
+
+	const handleOpenAuthForm = () => {
+		setIsOpenAuthForm(true)
+	}
 
 	const handleLogout = async () => {
 		logout()
 		setIsShow(false)
+		setIsOpenAuthForm(false)
 	}
 
 	return (
-		<header className={styles.header} ref={ref}>
+		<header className={styles.header}>
 			<Link to='/'>
-				<img src={LogoImage} alt='logo' className='w-20' />
+				<img src={LogoImage} alt='logo' className='w-40' />
 			</Link>
-			<div className={styles.userNav}>
+			<Searchbar />
+			<div className={styles.userNav} ref={ref}>
 				<Link to='/favorite'>
 					<MdOutlineFavoriteBorder
 						size={30}
@@ -49,9 +59,19 @@ function Header() {
 						)}
 					</>
 				) : (
-					<Link to='/auth'>
-						<Button type='button'>Login</Button>
-					</Link>
+					<>
+						<Button
+							type='button'
+							onClick={handleOpenAuthForm}
+							variant='light'
+							size='medium'
+						>
+							Ввійти
+						</Button>
+						{isOpenAuthForm && (
+							<Auth onClose={() => setIsOpenAuthForm(false)} />
+						)}
+					</>
 				)}
 			</div>
 		</header>
