@@ -24,8 +24,12 @@ function ProductCard({ product }: IProductCard) {
 				</div>
 				<h1>{product?.name}</h1>
 				<div className='flex items-center justify-between'>
-					<p className='font-semibold text-lg flex items-center gap-1'>
-						<FaStar style={{ color: 'goldenrod' }} size={20} />
+					<p className='font-semibold text-lg flex items-center gap-1 max-xs:text-sm'>
+						<FaStar
+							style={{ color: 'goldenrod' }}
+							size={20}
+							className='w-5 max-xs:w-4'
+						/>
 						{product.rating}
 					</p>
 				</div>

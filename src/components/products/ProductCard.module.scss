@@ -1,34 +1,71 @@
 .productCard {
   @apply p-4 pt-14 border border-light-gray rounded-xl flex flex-col gap-2 bg-bg-color relative shadow-md cursor-pointer;
-  width: calc(16% - 11px);
+  width: calc(16% - 8px);
   height: 100%;
 
   &:hover {
     @apply shadow-xl text-text;
   }
 
+  @media (max-width: 2138px) {
+    width: calc(17% - 26px);
+  }
+
+  @media (max-width: 1919px) {
+    width: calc(20% - 10px);
+  }
+
+  @media (max-width: 1399px) {
+    width: calc(25% - 9px);
+  }
+
+  @media (max-width: 1200px) {
+    width: 32%;
+  }
+
+  @media (max-width: 992px) {
+    width: calc(33% - 3px);
+  }
+
+  @media (max-width: 768px) {
+    width: calc(49% - 1px);
+  }
+
   > div {
     > .productImageWrap {
       @apply flex-grow flex justify-center items-center min-h-44;
 
+      @media (max-width: 468px) {
+        @apply min-h-28;
+      }
+
       > img {
         @apply mix-blend-multiply max-h-40;
+
+        @media (max-width: 468px) {
+          @apply max-h-28;
+        }
       }
     }
 
     > h1 {
-      @apply mt-8 flex-shrink-0;
-      min-height: 3rem;
+      @apply mt-8 flex-shrink-0 overflow-hidden;
+      height: 3rem;
+
+      @media (max-width: 468px) {
+        @apply text-sm;
+        height: 2.7rem;
+      }
     }
 
     > .cardFooter {
       @apply flex items-center justify-between;
 
       > h1 {
-        @apply text-2xl font-semibold;
+        @apply text-2xl font-semibold max-xs:text-xl;
 
         > span {
-          @apply text-lg ml-1;
+          @apply text-lg ml-1 max-xs:text-sm;
         }
       }
 
@@ -37,6 +74,10 @@
 
         &:hover {
           @apply bg-light-gray;
+        }
+
+        @media (max-width: 468px) {
+          @apply w-8 p-1.5;
         }
       }
     }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Layout } from 'antd'
 import ShopPage from '../ShopPage/ShopPage'
-import './Main.css'
+import './Main.module.scss'
 const { Content: AntContent } = Layout
 
 const Main: React.FC = () => {
