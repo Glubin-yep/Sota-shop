@@ -32,7 +32,7 @@ function Header() {
 	return (
 		<header className={styles.header}>
 			<Link to='/'>
-				<img src={LogoImage} alt='logo' className='w-40' />
+				<img src={LogoImage} alt='logo' className='w-40 max-sm:w-32' />
 			</Link>
 			<Searchbar />
 			<div className={styles.userNav} ref={ref}>

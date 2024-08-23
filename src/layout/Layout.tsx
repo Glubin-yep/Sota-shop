@@ -6,7 +6,7 @@ function Layout({ children }: { children: ReactNode }) {
 	return (
 		<main>
 			<Header />
-			<div className='flex pt-20 gap-2'>
+			<div className='flex pt-20 gap-2 max-sm:pt-16'>
 				<Sidebar />
 				<div className='pl-64 w-full'>{children}</div>
 			</div>
