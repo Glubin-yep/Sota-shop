@@ -1,4 +1,4 @@
 .bottomMenu {
-  @apply fixed h-14 left-0 right-0 bottom-0 bg-bg-color flex items-center justify-around;
+  @apply fixed h-14 left-0 right-0 bottom-0 bg-bg-color flex items-center justify-around z-50;
   box-shadow: 0 5px 10px;
 }
