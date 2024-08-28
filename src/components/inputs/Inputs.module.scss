@@ -25,3 +25,47 @@
     @apply text-error font-semibold text-sm;
   }
 }
+
+.searchbar {
+  @apply w-[535px];
+
+  @media (max-width: 1200px) {
+    @apply w-[335px];
+  }
+
+  @media (max-width: 768px) {
+    @apply w-full;
+  }
+
+  > div {
+    > svg {
+      @apply absolute text-black top-3 left-4 w-5 h-5;
+
+      @media (max-width: 768px) {
+        @apply w-4 h-4 top-2.5 left-3;
+      }
+    }
+
+    > input {
+      @apply w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-gray;
+
+      @media (max-width: 768px) {
+        @apply py-1 pl-9;
+        font-size: 16px;
+      }
+    }
+  }
+
+  > .searchModal {
+    @apply absolute top-[70px] bg-bg-color w-[535px] rounded-xl p-2 px-4 shadow-xl max-h-80 overflow-auto;
+
+    @media (max-width: 1200px) {
+      @apply  left-1/2 transform -translate-x-1/2;
+    }
+
+    @media (max-width: 768px) {
+      @apply top-14;
+      width: calc(100% - 16px);
+    }
+  }
+}

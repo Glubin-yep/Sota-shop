@@ -5,6 +5,7 @@ import { productService } from 'services/ProductService.ts'
 import SearchbarProductCars from 'components/products/SearchbarProductCars.tsx'
 import { Link } from 'react-router-dom'
 import { useOutside } from 'hooks/useOutside.ts'
+import styles from './Inputs.module.scss'
 
 function Searchbar() {
 	const [searchQuery, setSearchQuery] = useState('')
@@ -29,19 +30,18 @@ function Searchbar() {
 	}
 
 	return (
-		<div className='w-[535px]' ref={ref}>
+		<div className={styles.searchbar} ref={ref}>
 			<div className='relative' onClick={() => setIsShow(true)}>
-				<IoSearch className='absolute text-black top-3 left-4' size={20} />
+				<IoSearch />
 				<input
 					type='text'
 					placeholder='Пошук...'
-					className='w-full rounded-full pl-12 px-6 py-2 text-black outline-none text-lg placeholder:text-border'
 					value={searchQuery}
 					onChange={handleInputChange}
 				/>
 			</div>
 			{isShow && (
-				<div className='absolute top-[70px] bg-bg-color w-[535px] rounded-xl p-2 px-4 shadow-xl max-h-80 overflow-auto'>
+				<div className={styles.searchModal}>
 					{filteredDishes.length > 0 ? (
 						filteredDishes.map(product => (
 							<Link to={`/product/${product.id}`} onClick={handleLinkProduct}>

@@ -4,6 +4,7 @@ import AddressIcon from '/catalog/pin.png'
 import Instagram from '/catalog/instagram.png'
 import Facebook from '/catalog/facebook.png'
 import { Link } from 'react-router-dom'
+import { MdKeyboardArrowRight } from 'react-icons/md'
 
 function Sidebar() {
 	return (
@@ -14,6 +15,7 @@ function Sidebar() {
 						<div className={styles.sidebarItem} key={category.id}>
 							<img src={category.icon} alt='sidebar-item-icon' />
 							<span>{category.title}</span>
+							<MdKeyboardArrowRight className={styles.mobileItemIcon} />
 						</div>
 					))}
 				</div>

@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --header-height: 80px;
+
   --app-text: #000000;
   --app-background: #ffffff;
   --header-background: #221f1f;
@@ -20,6 +22,12 @@
   --light-gray: #e5e5e5;
 
   --subcolor: #0891b2;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
 }
 
 input:-webkit-autofill,

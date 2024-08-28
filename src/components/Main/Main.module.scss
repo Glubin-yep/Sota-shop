@@ -1,0 +1,10 @@
+
+.content {
+  @apply h-full overflow-y-auto overflow-x-hidden;
+  width: calc(100vw - 265px);
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+

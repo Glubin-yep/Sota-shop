@@ -5,6 +5,7 @@ import About from 'pages/About.tsx'
 import Contacts from 'pages/Contacts.tsx'
 import Service from 'pages/Service.tsx'
 import ProductPage from 'components/products/product-page/ProductPage.tsx'
+import Sidebar from 'components/sidebar/Sidebar.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -20,6 +21,14 @@ export const router = createBrowserRouter([
 		element: (
 			<Layout>
 				<ProductPage />
+			</Layout>
+		)
+	},
+	{
+		path: '/catalog',
+		element: (
+			<Layout>
+				<Sidebar />
 			</Layout>
 		)
 	},
