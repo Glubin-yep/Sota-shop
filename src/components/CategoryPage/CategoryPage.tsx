@@ -1,89 +1,41 @@
 import React from 'react'
-import './CategoryPage.css'
+import { useParams } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { productService } from 'services/ProductService.ts'
+import Loader from 'components/Loader/Loader.tsx'
+import ProductCard from 'components/products/ProductCard.tsx'
+import styles from 'components/home/Home.module.scss'
+import Error404 from 'components/ErrorPages/Error404/Error404.tsx'
 
 interface CategoryPageProps {
-	category: string
-	onChangeContent: (content: React.ReactNode) => void
+	category?: string
+	onChangeContent?: (content: React.ReactNode) => void
 }
 
 const CategoryPage: React.FC<CategoryPageProps> = () => {
-	// const [products, setProducts] = useState<ProductDetails[]>([])
-	// const [isLoading, setIsLoading] = useState(false)
-	//
-	// useEffect(() => {
-	// 	const fetchProducts = async () => {
-	// 		setIsLoading(true)
-	// 		try {
-	// 			const fetchedProducts =
-	// 				await ProductService.getAllProductByCategory(category)
-	// 			setProducts(fetchedProducts)
-	// 		} catch (error) {
-	// 			console.error('Error fetching products:', error)
-	// 		} finally {
-	// 			setIsLoading(false)
-	// 		}
-	// 	}
-	//
-	// 	fetchProducts()
-	// }, [category])
-	//
-	// const categoryName =
-	// 	CategoryUA[category as keyof typeof CategoryUA] || 'Unknown Category'
+	const { category } = useParams()
+
+	const { data: products, status } = useQuery({
+		queryKey: ['category products', category],
+		queryFn: () => productService.getAllProductByCategory(category)
+	})
+
+	if (status === 'pending') return <Loader />
+	if (status === 'error') return <Error404 />
 
 	return (
-		<h1>All good</h1>
-		// <div className={`product--section`} id={category}>
-		// 	<div className='title'>
-		// 		<h1 className='title--block'>
-		// 			<p className='title--text'>{categoryName}</p>
-		// 			<hr className='title--line' />
-		// 		</h1>
-		// 	</div>
-		// 	<div className='cards--block--all'>
-		// 		{isLoading ? (
-		// 			<LoadingScreen />
-		// 		) : products.length > 0 ? (
-		// 			<>
-		// 				{products.map(product => (
-		// 					<div
-		// 						className='card'
-		// 						key={product.id}
-		// 						onClick={() =>
-		// 							onChangeContent(
-		// 								<ProductDetail
-		// 									id={product.id}
-		// 									onChangeContent={onChangeContent}
-		// 								/>
-		// 							)
-		// 						}
-		// 					>
-		// 						<img
-		// 							src={product.photoURL}
-		// 							className='card--photo'
-		// 							alt={product.name}
-		// 							loading='lazy'
-		// 						/>
-		// 						<span className='card--title'>{product.name}</span>
-		// 						<div className='card--rating'>
-		// 							<span className='star'>★</span>
-		// 							<span>
-		// 								{product.rating ? product.rating.toFixed(1) : 'N/A'}
-		// 							</span>
-		// 						</div>
-		// 						<span className='card--price'>{product.price} грн.</span>
-		// 						<Badge className='card--button'>
-		// 							<a href='/cart'>
-		// 								<ShoppingCartOutlined style={{ fontSize: '24px' }} />
-		// 							</a>
-		// 						</Badge>
-		// 					</div>
-		// 				))}
-		// 			</>
-		// 		) : (
-		// 			<p>No products available in this category.</p>
-		// 		)}
-		// 	</div>
-		// </div>
+		<section className={styles.productSection}>
+			<div>
+				{products?.map(product => (
+					<ProductCard product={product} key={product.id} />
+				))}
+			</div>
+			{products?.length === 0 && (
+				<h1 className='h-full w-full flex items-center justify-center'>
+					Тут ще немає товарів
+				</h1>
+			)}
+		</section>
 	)
 }
 

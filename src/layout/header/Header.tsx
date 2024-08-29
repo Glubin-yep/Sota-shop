@@ -12,12 +12,14 @@ import { useActions } from 'hooks/useActions.ts'
 import { useState } from 'react'
 import Auth from 'components/auth/Auth.tsx'
 import Searchbar from 'components/inputs/Searchbar.tsx'
+import { useCart } from 'react-use-cart'
 
 function Header() {
 	const { isAuthenticated } = useProfile()
 	const [isOpenAuthForm, setIsOpenAuthForm] = useState(false)
 	const { isShow, setIsShow, ref } = useOutside<HTMLDivElement>(false)
 	const { logout } = useActions()
+	const { totalUniqueItems } = useCart()
 
 	const handleOpenAuthForm = () => {
 		setIsOpenAuthForm(true)
@@ -43,7 +45,20 @@ function Header() {
 						color='#fff'
 					/>
 				</Link>
-				<IoCartOutline size={30} style={{ cursor: 'pointer' }} color='#fff' />
+				<Link to='/cart'>
+					<div className='relative'>
+						<IoCartOutline
+							size={30}
+							style={{ cursor: 'pointer' }}
+							color='#fff'
+						/>
+						{totalUniqueItems > 0 && (
+							<span className='w-6 h-6 absolute -top-2.5 -right-2.5 text-center font-semibold rounded-full bg-light-gray'>
+								{totalUniqueItems}
+							</span>
+						)}
+					</div>
+				</Link>
 				{isAuthenticated ? (
 					<>
 						<AiOutlineUser

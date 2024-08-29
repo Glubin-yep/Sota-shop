@@ -25,9 +25,11 @@ export const productService = {
 		}
 	},
 
-	async getAllProductByCategory(category: string): Promise<ProductDetails[]> {
+	async getAllProductByCategory(
+		category: string | undefined
+	): Promise<ProductType[]> {
 		try {
-			const response = await axiosClassic.get<ProductDetails[]>(
+			const response = await axiosClassic.get<ProductType[]>(
 				`/products/category/${category}`
 			)
 			return response.data

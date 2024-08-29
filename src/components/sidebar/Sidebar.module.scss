@@ -84,6 +84,10 @@
   }
 }
 
+.sidebarItemActive {
+  @apply bg-light-gray;
+}
+
 .additionalInfo {
   @apply px-4 text-center;
 
