@@ -7,6 +7,8 @@ import Service from 'pages/Service.tsx'
 import ProductPage from 'components/products/product-page/ProductPage.tsx'
 import Sidebar from 'components/sidebar/Sidebar.tsx'
 import CategoryPage from 'components/CategoryPage/CategoryPage.tsx'
+import Error404 from 'components/ErrorPages/Error404/Error404.tsx'
+import UserPage from 'components/UserPage/UserPage.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -15,7 +17,8 @@ export const router = createBrowserRouter([
 			<Layout>
 				<HomePage />
 			</Layout>
-		)
+		),
+		errorElement: <Error404 />
 	},
 	{
 		path: '/product/:id',
@@ -38,6 +41,14 @@ export const router = createBrowserRouter([
 		element: (
 			<Layout>
 				<Sidebar />
+			</Layout>
+		)
+	},
+	{
+		path: '/profile',
+		element: (
+			<Layout>
+				<UserPage />
 			</Layout>
 		)
 	},

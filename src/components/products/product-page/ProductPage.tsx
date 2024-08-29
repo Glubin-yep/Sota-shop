@@ -10,6 +10,7 @@ import styles from '../ProductCard.module.scss'
 import { FaStar } from 'react-icons/fa'
 import { convertPrice } from 'utils/convertPrice.ts'
 import DeliveryInfo from 'components/DeliveryInfo/DeliveryInfo.tsx'
+import Error404 from 'components/ErrorPages/Error404/Error404.tsx'
 
 function ProductPage() {
 	const { id } = useParams<{ id: string }>()
@@ -24,8 +25,8 @@ function ProductPage() {
 		enabled: !!productId
 	})
 	if (status === 'pending') return <Loader />
-	if (status === 'error') return <div>Not found</div>
-	if (!product) return <div>Not found</div>
+	if (status === 'error') return <Error404 />
+	if (!product) return <Error404 />
 
 	return (
 		<section className={styles.productPage}>

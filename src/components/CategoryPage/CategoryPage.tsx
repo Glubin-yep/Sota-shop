@@ -1,11 +1,11 @@
 import React from 'react'
-import './CategoryPage.css'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { productService } from 'services/ProductService.ts'
 import Loader from 'components/Loader/Loader.tsx'
 import ProductCard from 'components/products/ProductCard.tsx'
 import styles from 'components/home/Home.module.scss'
+import Error404 from 'components/ErrorPages/Error404/Error404.tsx'
 
 interface CategoryPageProps {
 	category?: string
@@ -21,7 +21,7 @@ const CategoryPage: React.FC<CategoryPageProps> = () => {
 	})
 
 	if (status === 'pending') return <Loader />
-	if (status === 'error') return <h1>Error</h1>
+	if (status === 'error') return <Error404 />
 
 	return (
 		<section className={styles.productSection}>
