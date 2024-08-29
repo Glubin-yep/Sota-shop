@@ -7,7 +7,12 @@ import Loader from 'components/Loader/Loader.tsx'
 import ProductCard from 'components/products/ProductCard.tsx'
 import styles from 'components/home/Home.module.scss'
 
-const CategoryPage: React.FC = () => {
+interface CategoryPageProps {
+	category?: string
+	onChangeContent?: (content: React.ReactNode) => void
+}
+
+const CategoryPage: React.FC<CategoryPageProps> = () => {
 	const { category } = useParams()
 
 	const { data: products, status } = useQuery({
