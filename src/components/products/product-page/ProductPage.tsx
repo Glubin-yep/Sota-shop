@@ -11,10 +11,12 @@ import { FaStar } from 'react-icons/fa'
 import { convertPrice } from 'utils/convertPrice.ts'
 import DeliveryInfo from 'components/DeliveryInfo/DeliveryInfo.tsx'
 import Error404 from 'components/ErrorPages/Error404/Error404.tsx'
+import { useCart } from 'react-use-cart'
 
 function ProductPage() {
 	const { id } = useParams<{ id: string }>()
 	const productId = id ? parseInt(id, 10) : undefined
+	const { addItem } = useCart()
 
 	const { data: product, status } = useQuery<ProductDetails>({
 		queryKey: ['product', id],
@@ -27,6 +29,15 @@ function ProductPage() {
 	if (status === 'pending') return <Loader />
 	if (status === 'error') return <Error404 />
 	if (!product) return <Error404 />
+
+	const handleAddToCart = () => {
+		addItem({
+			id: product.id,
+			name: product.name,
+			price: +product.price,
+			image: product.photoURL
+		})
+	}
 
 	return (
 		<section className={styles.productPage}>
@@ -50,7 +61,11 @@ function ProductPage() {
 				<h1 className={styles.detailsTitle}>Характеристики:</h1>
 				<ProductDetailsComponent product={product} />
 				<hr />
-				<Button type='button' className='flex items-center gap-2 m-auto'>
+				<Button
+					type='button'
+					className='flex items-center gap-2 m-auto'
+					onClick={handleAddToCart}
+				>
 					<IoCartOutline size={25} />
 					Додати в корзину
 				</Button>

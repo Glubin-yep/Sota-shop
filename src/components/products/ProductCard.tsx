@@ -5,12 +5,24 @@ import { convertPrice } from 'utils/convertPrice.ts'
 import { FaStar } from 'react-icons/fa'
 import { MdOutlineFavoriteBorder } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { useCart } from 'react-use-cart'
 
 interface IProductCard {
 	product: ProductType
 }
 
 function ProductCard({ product }: IProductCard) {
+	const { addItem } = useCart()
+
+	const handleAddToCart = () => {
+		addItem({
+			id: product.id,
+			name: product.name,
+			price: product.price,
+			image: product.photoURL
+		})
+	}
+
 	return (
 		<Link to={`/product/${product.id}`} className={styles.productCard}>
 			<div>
@@ -38,7 +50,8 @@ function ProductCard({ product }: IProductCard) {
 						{convertPrice(product?.price)}
 						<span>₴</span>
 					</h1>
-					<IoCartOutline />
+					{/*TODO: fix bug: prevent link to card when click at heart and cart icon*/}
+					<IoCartOutline onClick={handleAddToCart} />
 				</div>
 			</div>
 		</Link>

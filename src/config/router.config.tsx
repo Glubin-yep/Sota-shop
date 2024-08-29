@@ -9,6 +9,7 @@ import Sidebar from 'components/sidebar/Sidebar.tsx'
 import CategoryPage from 'components/CategoryPage/CategoryPage.tsx'
 import Error404 from 'components/ErrorPages/Error404/Error404.tsx'
 import UserPage from 'components/UserPage/UserPage.tsx'
+import Cart from 'components/cart/Cart.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -33,6 +34,14 @@ export const router = createBrowserRouter([
 		element: (
 			<Layout>
 				<CategoryPage />
+			</Layout>
+		)
+	},
+	{
+		path: '/cart',
+		element: (
+			<Layout>
+				<Cart />
 			</Layout>
 		)
 	},
