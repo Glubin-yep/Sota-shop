@@ -6,6 +6,7 @@ import Contacts from 'pages/Contacts.tsx'
 import Service from 'pages/Service.tsx'
 import ProductPage from 'components/products/product-page/ProductPage.tsx'
 import Sidebar from 'components/sidebar/Sidebar.tsx'
+import CategoryPage from 'components/CategoryPage/CategoryPage.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -21,6 +22,14 @@ export const router = createBrowserRouter([
 		element: (
 			<Layout>
 				<ProductPage />
+			</Layout>
+		)
+	},
+	{
+		path: '/category/:category',
+		element: (
+			<Layout>
+				<CategoryPage />
 			</Layout>
 		)
 	},

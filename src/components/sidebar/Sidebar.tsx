@@ -3,8 +3,9 @@ import CategoryData from './Category.json'
 import AddressIcon from '/catalog/pin.png'
 import Instagram from '/catalog/instagram.png'
 import Facebook from '/catalog/facebook.png'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { MdKeyboardArrowRight } from 'react-icons/md'
+import cn from 'clsx'
 
 function Sidebar() {
 	return (
@@ -12,11 +13,17 @@ function Sidebar() {
 			<div className={styles.sidebarContent}>
 				<div className={styles.top}>
 					{CategoryData.map(category => (
-						<div className={styles.sidebarItem} key={category.id}>
+						<NavLink
+							to={`/category/${category.category}`}
+							className={({ isActive }) =>
+								cn(styles.sidebarItem, isActive ? styles.sidebarItemActive : '')
+							}
+							key={category.id}
+						>
 							<img src={category.icon} alt='sidebar-item-icon' />
 							<span>{category.title}</span>
 							<MdKeyboardArrowRight className={styles.mobileItemIcon} />
-						</div>
+						</NavLink>
 					))}
 				</div>
 				<div className={styles.bottom}>
