@@ -3,22 +3,19 @@ import styles from './Cart.module.scss'
 import { useCart } from 'react-use-cart'
 import Button from 'components/buttons/Button.tsx'
 import { convertPrice } from 'utils/convertPrice.ts'
+import useWindowSize from 'hooks/useWindowSize.ts'
 
 function Cart() {
-	const {
-		isEmpty,
-		items,
-		updateItemQuantity,
-		removeItem,
-		cartTotal,
-		emptyCart
-	} = useCart()
+	const { isEmpty, items, updateItemQuantity, removeItem, cartTotal } =
+		useCart()
+
+	const { width } = useWindowSize()
+
+	const isTablet = width ? width < 1260 && width > 992 : false
 
 	if (isEmpty)
 		return (
-			<p className='font-semibold text-2xl text-center mt-10'>
-				Your cart is empty
-			</p>
+			<p className='font-semibold text-2xl text-center mt-10'>Корзина пуста</p>
 		)
 
 	return (
@@ -37,8 +34,8 @@ function Cart() {
 				</div>
 				<div className={styles.cartTotal}>
 					<h1>Загальна сума: {convertPrice(cartTotal)} грн.</h1>
-					<Button type='button' onClick={() => emptyCart()}>
-						Очистити корзину
+					<Button type='button' size={isTablet ? 'small' : 'default'}>
+						Оформити замовлення
 					</Button>
 				</div>
 			</div>

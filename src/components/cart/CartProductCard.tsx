@@ -32,18 +32,18 @@ function CartProductCard({
 					<p>{convertPrice(item.price)} грн.</p>
 					<div>
 						<button
-							className='cursor-pointer w-8 h-8 rounded-full flex items-center justify-center bg-light-gray'
+							className='cursor-pointer p-2 rounded-full flex items-center justify-center bg-light-gray'
 							onClick={() => updateItemQuantity(item.id, quantity - 1)}
 							disabled={item.quantity === 1}
 						>
-							<FiMinus size={16} />
+							<FiMinus className='w-4 max-sm:w-2 max-sm:h-2' />
 						</button>
 						<span>{item.quantity}</span>
 						<button
 							className='cursor-pointer p-2 rounded-full flex items-center justify-center bg-light-gray'
 							onClick={() => updateItemQuantity(item.id, quantity + 1)}
 						>
-							<FiPlus size={16} />
+							<FiPlus className='w-4 max-sm:w-2 max-sm:h-2' />
 						</button>
 					</div>
 				</div>
